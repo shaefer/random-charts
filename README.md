@@ -10,5 +10,5 @@ A series of Javascript files for the easy creation of random charts from the Pat
 ```javascript
 var items = ["Item1", "Item2"];
 RandomChart.create("NewChartClassName", items);
-var randomSelection = NewChartClassName.get();
+var randomSelection = new NewChartClassName().get();
 ```
