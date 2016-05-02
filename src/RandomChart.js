@@ -21,7 +21,7 @@ function RandomChart(myItems) {
 
 RandomChart.create = function(className, itemList) {
 	window[className] = function() {
-		RandomChart.call(this, items);
+		RandomChart.call(this, itemList);
 	}
 	window[className].prototype = Object.create(RandomChart.prototype);
 }
