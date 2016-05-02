@@ -47,10 +47,17 @@ function UniqueTavernTraits(myItems) {
 		"Has a tree growing through the taproom"
 	]
 
-	this.get = function() {
-		var index = Math.floor(Math.random() * items.length)
-		var item = items[index]
-		return {index:index, text:item};
+	this.get = function(times) {
+		if (!times)
+			times = 1
+		var selectedItems = [];
+		for(var i = 0;i<times;i++) {
+			var index = Math.floor(Math.random() * items.length)
+			var item = items[index]
+			selectedItems.push({index:index, text:item})
+		}
+		
+		return selectedItems;
 	}
 
 	this.getAll = function() {
