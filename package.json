@@ -9,6 +9,7 @@
   },
   "scripts": {
     "lint": "jshint src || true",
-    "test": "mocha-phantomjs SpecRunner.html"
+    "test": "mocha-phantomjs SpecRunner.html",
+    "build": "npm run lint & npm run test"
   }
 }
