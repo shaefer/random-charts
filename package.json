@@ -1,0 +1,14 @@
+{
+  "name": "randomcharts",
+  "devDependencies": {
+    "jshint": "latest",
+    "browserify": "latest",
+    "chai": "latest",
+    "mocha": "latest",
+    "mocha-phantomjs": "latest"
+  },
+  "scripts": {
+    "lint": "jshint src || true",
+    "test": "mocha-phantomjs SpecRunner.html"
+  }
+}

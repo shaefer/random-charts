@@ -45,6 +45,6 @@
 		"Obnoxious patrons get thrown off the balcony",
 		"Lit with magic lanterns or bioluminescent creatures",
 		"Has a tree growing through the taproom"
-	]
+	];
 	RandomChart.create("UniqueTavernTraits", items);
 })();

@@ -2,14 +2,20 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Jasmine Spec Runner v2.4.1</title>
+  <title>Spec Runner</title>
 
-  <link rel="shortcut icon" type="image/png" href="jasmine-standalone-2.4.1/lib/jasmine-2.4.1/jasmine_favicon.png">
-  <link rel="stylesheet" href="jasmine-standalone-2.4.1/lib/jasmine-2.4.1/jasmine.css">
+  <link rel="stylesheet" href="./node_modules/mocha/mocha.css" />
 
-  <script src="jasmine-standalone-2.4.1/lib/jasmine-2.4.1/jasmine.js"></script>
-  <script src="jasmine-standalone-2.4.1/lib/jasmine-2.4.1/jasmine-html.js"></script>
-  <script src="jasmine-standalone-2.4.1/lib/jasmine-2.4.1/boot.js"></script>
+</head>
+<body>
+
+  <div id="mocha"></div>
+  <script src="./node_modules/mocha/mocha.js"></script>
+  <script src="./node_modules/chai/chai.js"></script>
+  <script>
+    mocha.ui('bdd');
+    var expect = chai.expect
+  </script>
 
   <!-- include source files here... -->
   <script src="src/RandomChart.js"></script>
@@ -20,9 +26,8 @@
   <script src="spec/RandomChartSpecHelper.js"></script>
   <script src="spec/UniqueTavernTraitsSpec.js"></script>
   <script src="spec/TavernMenuItemsSpec.js"></script>
-
-</head>
-
-<body>
+  <script>
+    mocha.run();
+  </script>
 </body>
 </html>
