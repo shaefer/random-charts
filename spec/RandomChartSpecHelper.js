@@ -10,7 +10,7 @@ RandomChartSpec.verify = function(chart, amount) {
     });
   });
   describe('getAll()', function(){
-    it('should return list of all items', function(){
+    it('should return list of ' + amount + ' items', function(){
         RandomChartSpec.verifyGetAll(chart, amount);
     });
   });

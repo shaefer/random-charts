@@ -7,8 +7,11 @@ describe('RandomChart', function() {
   describe('create', function () {
     it('should create a new class that can be instantiated and results returned', function() {
       CreateDemoChart();
-      var dynamicChart = new NewChartClassName();
-      RandomChartSpec.verify(dynamicChart, 3);
+      var chart = new NewChartClassName();
+      var amount = 3;
+      RandomChartSpec.verifyGet(chart, amount);
+      RandomChartSpec.verifyMultipleGet(chart, amount);
+      RandomChartSpec.verifyGetAll(chart, amount);
     });
   });
 });
