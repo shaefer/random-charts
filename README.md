@@ -10,9 +10,13 @@ A small library for the easy creation of random charts.
 * RandomCharts.html (Run this to exercise the code)
 * SpecRunner.html (Run this to run the Mocha tests in the browser)
 
-## To make a new random chart ##
+## To make a new random chart class ##
 ```javascript
 var items = ["Item1", "Item2"];
 RandomChart.create("NewChartClassName", items);
+```
+
+## To get a random item from new chart class ##
+```javascript
 var randomSelection = new NewChartClassName().get();
 ```
