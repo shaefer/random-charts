@@ -20,3 +20,11 @@ RandomChart.create("NewChartClassName", items);
 ```javascript
 var randomSelection = new NewChartClassName().get();
 ```
+```
+[
+  {
+    "index": 1,
+    "text": "Item2"
+  }
+]
+```
