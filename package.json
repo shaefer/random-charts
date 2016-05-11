@@ -7,6 +7,9 @@
     "mocha": "latest",
     "mocha-phantomjs": "latest"
   },
+  "dependencies": {
+    "seedrandom": "latest"
+  },
   "scripts": {
     "lint": "jshint src || true",
     "test": "mocha-phantomjs SpecRunner.html",
