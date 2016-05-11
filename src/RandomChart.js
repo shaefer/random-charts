@@ -1,19 +1,10 @@
-if (!Math.seedrandom) console.warn("Math.seedrandom function is missing. Seedrandom library (https://github.com/davidbau/seedrandom) most likely has not been loaded. This will gracefully fallback to Math.random() behavior.")
-
+if (!Math.seedrandom) console.warn("Math.seedrandom function is missing. Seedrandom library (https://github.com/davidbau/seedrandom) most likely has not been loaded. This will gracefully fallback to Math.random() behavior.");
 function RandomChart(myItems, randomSeed) {
 	var items = myItems;
-	var random = Math.random;
-	if (Math.seedrandom) {
-    if (randomSeed) {
-      random = new Math.seedrandom(randomSeed);
-    } else {
-      Math.seedrandom();
-    }
-	}
+	var random = utilizeRandomSeedFunctionalityOrFallbackToMathDotRandom(randomSeed);
 
 	this.get = function(times) {
-		if (!times)
-			times = 1;
+		if (!times) times = 1;
 		var selectedItems = [];
 		for(var i = 0;i<times;i++) {
 			var index = Math.floor(random() * items.length);
@@ -27,6 +18,18 @@ function RandomChart(myItems, randomSeed) {
 	this.getAll = function() {
 		return items;
 	};
+}
+
+function utilizeRandomSeedFunctionalityOrFallbackToMathDotRandom(randomSeed) {
+  var random = Math.random;
+	if (Math.seedrandom) {
+    if (randomSeed) {
+      random = new Math.seedrandom(randomSeed);
+    } else {
+      Math.seedrandom();
+    }
+	}
+	return random;
 }
 
 RandomChart.create = function(className, itemList) {
