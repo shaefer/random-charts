@@ -4,9 +4,9 @@ function CreateDemoChart() {
 }
 
 describe('RandomChart', function() {
+  CreateDemoChart();
   describe('create', function () {
     it('should create a new class that can be instantiated and results returned', function() {
-      CreateDemoChart();
       var chart = new NewChartClassName();
       var amount = 3;
       RandomChartSpec.verifyGet(chart, amount);
@@ -14,7 +14,11 @@ describe('RandomChart', function() {
       RandomChartSpec.verifyGetAll(chart, amount);
     });
   });
+
+  var chart = new NewChartClassName();
+  RandomChartSpec.verify(chart, 3);
 });
+
 
 describe('ChartsWithRandomSeed', function() {
   CreateDemoChart();
