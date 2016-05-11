@@ -18,6 +18,10 @@ function RandomChart(myItems, randomSeed) {
 	this.getAll = function() {
 		return items;
 	};
+
+	this.getRandomSeed = function() {
+	  return randomSeed;
+	};
 }
 
 function utilizeRandomSeedFunctionalityOrFallbackToMathDotRandom(randomSeed) {
