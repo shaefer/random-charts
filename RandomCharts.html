@@ -5,6 +5,7 @@
   <title>Random Charts 0.0.2</title>
 
   <!-- include source files here... -->
+  <script src="node_modules/scriber-js/dist/scriber.min.js"></script>
   <script src="node_modules/seedrandom/seedrandom.min.js"></script>
   <script src="src/RandomChart.js"></script>
   <script src="src/UniqueTavernTraits.js"></script>
@@ -12,15 +13,16 @@
 
 <body>
   <script>
-    function attachResultToDOM(item) {
-      var preNode = document.createElement("pre");
-      var jsonFormatted = document.createTextNode(JSON.stringify(item, null, "  "));
-      preNode.appendChild(jsonFormatted);
+    function attachResultToDOMScriber(item) {
+      var preNode = scriber
+        .pre()
+        .text(JSON.stringify(item, null, "  "))
+      .end().toHTMLElement();
       document.body.appendChild(preNode);
     }
     function buildChartAndExecute(seed) {
       var item = new UniqueTavernTraits(seed).get();
-      attachResultToDOM(item);
+      attachResultToDOMScriber(item);
     }
     buildChartAndExecute();
     buildChartAndExecute("Fixed");

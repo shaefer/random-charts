@@ -8,7 +8,8 @@
     "mocha-phantomjs": "latest"
   },
   "dependencies": {
-    "seedrandom": "latest"
+    "seedrandom": "latest",
+    "scriber-js": "latest"
   },
   "scripts": {
     "lint": "jshint src || true",
