@@ -1,10 +1,14 @@
-# Random Charts (Pathfinder)#
+# Random Charts #
 
-A series of Javascript files for the easy creation of random charts from the Pathfinder Gamemastery Guide
+A small library for the easy creation of random charts.
+
+## Setup
+* npm install
+* npm run build (jshint and mocha test run via phantomjs)
 
 ## There are two files of note ##
 * RandomCharts.html (Run this to exercise the code)
-* SpecRunner.html (Run this to run the Jasmine tests)
+* SpecRunner.html (Run this to run the Mocha tests in the browser)
 
 ## To make a new random chart ##
 ```javascript
