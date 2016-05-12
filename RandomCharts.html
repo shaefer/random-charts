@@ -20,10 +20,12 @@
       .end().toHTMLElement();
       document.body.appendChild(preNode);
     }
+
     function buildChartAndExecute(seed) {
       var item = new UniqueTavernTraits(seed).get();
       attachResultToDOMScriber(item);
     }
+    
     buildChartAndExecute();
     buildChartAndExecute("Fixed");
     buildChartAndExecute("Fixed2");
