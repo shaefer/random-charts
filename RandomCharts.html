@@ -33,7 +33,7 @@
 
     var diceChartItems = ["One1", "Two2", "Three3", "Four4", "Five5", "Six6", "Seven7"];
     DiceChart.create("DiceChartClass", 2, 4, diceChartItems);
-    var diceChartItem = new DiceChartClass().get();
+    var diceChartItem = new DiceChartClass("Fixed").get();
     attachResultToDOMScriber(diceChartItem);
 
     var items = ["One1", "Two2", "Three3"];

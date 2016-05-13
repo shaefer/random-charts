@@ -34,30 +34,34 @@ function utilizeRandomSeedFunctionalityOrFallbackToMathDotRandom(randomSeed) {
 	return random;
 }
 
-function add(a, b) {
+DiceChart.add = function(a, b) {
     return a + b;
 }
 
-function rollDice(numOfDice, numOfSides, random) {
+DiceChart.rollDice = function(numOfDice, numOfSides, random) {
   var diceRolled = [];
   for(var i = 0;i<numOfDice;i++) {
     var dieRoll = Math.floor(random() * numOfSides) + 1;
     diceRolled.push(dieRoll);
   }
 
-  var sum = diceRolled.reduce(add, 0);
+  var sum = diceRolled.reduce(DiceChart.add, 0);
   var result = {total: sum, diceRolled: diceRolled};
   return result;
 }
 
 DiceChart.create = function(className, numOfDice, numOfSides, itemList) {
+  var numOfItemsPossibleWithDice = (numOfDice * numOfSides) - numOfDice + 1;
+  if (numOfItemsPossibleWithDice != itemList.length)
+    throw new Error("A chart of "+numOfDice+"d"+numOfSides+" items should have "+numOfItemsPossibleWithDice+" items. You have specified "+itemList.length+".")
+
 	window[className] = function(randomSeed) {
 		DiceChart.call(this, itemList, randomSeed);
 	};
 
 	var diceChartPrototype = Object.create(DiceChart.prototype);
 	diceChartPrototype.getSelectedItem = function(items, random) {
-    var results = rollDice(numOfDice, numOfSides, random);
+    var results = DiceChart.rollDice(numOfDice, numOfSides, random);
     var index = results.total - numOfDice;
     var item = items[index];
     return {index:index, text:item, rollResults:results};
