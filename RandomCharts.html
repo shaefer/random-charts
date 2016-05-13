@@ -8,6 +8,7 @@
   <script src="node_modules/scriber-js/dist/scriber.min.js"></script>
   <script src="node_modules/seedrandom/seedrandom.min.js"></script>
   <script src="src/RandomChart.js"></script>
+  <script src="src/DiceChart.js"></script>
   <script src="src/UniqueTavernTraits.js"></script>
 </head>
 
@@ -29,6 +30,11 @@
     buildChartAndExecute();
     buildChartAndExecute("Fixed");
     buildChartAndExecute("Fixed2");
+
+    var diceChartItems = ["One1", "Two2", "Three3", "Four4", "Five5", "Six6", "Seven7"];
+    DiceChart.create("DiceChartClass", 2, 4, diceChartItems);
+    var diceChartItem = new DiceChartClass().get();
+    attachResultToDOMScriber(diceChartItem);
 
     var items = ["One1", "Two2", "Three3"];
     RandomChart.create("NewChartClassName", items);
