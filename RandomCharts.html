@@ -5,6 +5,7 @@
   <title>Random Charts 0.0.2</title>
 
   <!-- include source files here... -->
+  <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
   <script src="node_modules/scriber-js/dist/scriber.min.js"></script>
   <script src="node_modules/seedrandom/seedrandom.min.js"></script>
   <script src="src/RandomChart.js"></script>
@@ -28,18 +29,42 @@
     }
     
     buildChartAndExecute();
-    buildChartAndExecute("Fixed");
-    buildChartAndExecute("Fixed2");
+    //buildChartAndExecute("Fixed");
+    //buildChartAndExecute("Fixed2");
 
-    var diceChartItems = ["One1", "Two2", "Three3", "Four4", "Five5", "Six6", "Seven7"];
-    DiceChart.create("DiceChartClass", 2, 4, diceChartItems);
-    var diceChartItem = new DiceChartClass("Fixed").get();
-    attachResultToDOMScriber(diceChartItem);
+    <!--var diceChartItems = ["One1", "Two2", "Three3", "Four4", "Five5", "Six6", "Seven7"];-->
+    <!--DiceChart.create("DiceChartClass", 2, 4, diceChartItems);-->
+    <!--var diceChartItem = new DiceChartClass("Fixed").get();-->
+    <!--attachResultToDOMScriber(diceChartItem);-->
 
-    var items = ["One1", "Two2", "Three3"];
-    RandomChart.create("NewChartClassName", items);
-    var randomSelection = new NewChartClassName().get();
-    console.warn(JSON.stringify(randomSelection));
+    <!--var items = ["One1", "Two2", "Three3"];-->
+    <!--RandomChart.create("NewChartClassName", items);-->
+    <!--var randomSelection = new NewChartClassName().get();-->
+    <!--console.warn(JSON.stringify(randomSelection));-->
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      console.warn("Dom ready");
+      responsiveVoice.OnVoiceReady = function() {
+        console.log("speech time?");
+
+        function attachResultToDOMScriber(item) {
+          var preNode = scriber
+            .pre()
+            .text(JSON.stringify(item, null, "  "))
+          .end().toHTMLElement();
+          document.body.appendChild(preNode);
+          responsiveVoice.speak(item[0].text);
+        }
+
+        function buildChartAndExecute(seed) {
+          var item = new UniqueTavernTraits(seed).get();
+          attachResultToDOMScriber(item);
+        }
+
+        buildChartAndExecute();
+      };
+
+    });
   </script>
 </body>
 </html>

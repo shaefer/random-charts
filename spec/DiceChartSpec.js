@@ -1,24 +1,25 @@
 function CreateDemoDiceChart() {
+  var seed = "Fixed";
   var items = ["One1", "Two2", "Three3", "Four4", "Five5", "Six6", "Seven7"];
   var numOfDice = 2;
   var numOfSides = 4;
-  DiceChart.create("NewChartClassName2", numOfDice, numOfSides, items);
+  return DiceChart.create(numOfDice, numOfSides, items, seed);
 }
 
 function CreateDemoDiceChartWithMismatchedItemCountAndDice() {
   var items = ["One1", "Two2", "Three3", "Four4"];
   var numOfDice = 2;
   var numOfSides = 4;
-  DiceChart.create("DiceChartSample3", numOfDice, numOfSides, items);
+  DiceChart.create(numOfDice, numOfSides, items);
 }
 
 describe('DiceChart', function() {
   describe('create', function () {
     it('should create a new class that can be instantiated and results returned by a dice roll', function() {
-      CreateDemoDiceChart();
-      var chart = new NewChartClassName2("Fixed");
+      var chart = CreateDemoDiceChart();
       var item = chart.get();
-      expect(item[0].rollResults.total).to.eql(4);
+      expect(item).to.be.ok;
+      expect(item.rollResults.total).to.eql(4);
     });
     it('should throw an error if the items do not match the dice combinations', function() {
       expect(CreateDemoDiceChartWithMismatchedItemCountAndDice).to.throw(/A chart of 2d4 items should have 7 items. You have specified 4./);

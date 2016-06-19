@@ -1,4 +1,4 @@
 describe('TavernMenuItems', function() {
-  var chart = new TavernMenuItems();
+  var chart = RandomChart.TavernMenuItems;
   RandomChartSpec.verify(chart, 50);
 });

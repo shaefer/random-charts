@@ -1,4 +1,4 @@
 describe('UniqueTavernTraits', function() {
-  var chart = new UniqueTavernTraits();
+  var chart = RandomChart.UniqueTavernTraits;
   RandomChartSpec.verify(chart, 45);
 });
