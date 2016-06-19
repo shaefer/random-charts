@@ -25,7 +25,7 @@ var arrayOfChartNames = RandomChart.chartNames;
 //Get me one item from each chart
 var retrievedItems = [];
 arrayOfChartNames.forEach(function(chartName) {
-    retrievedItems.push(RandomChart[chartName].get())
+    retrievedItems.push(RandomChart[chartName].get());
 });
 ```
 
