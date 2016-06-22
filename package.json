@@ -9,11 +9,16 @@
   },
   "dependencies": {
     "seedrandom": "latest",
-    "scriber-js": "latest"
+    "scriber-js": "latest",
+    "babel-cli": "latest",
+    "babel-preset-es2015": "latest"
   },
   "scripts": {
+    "clean": "rm -rf lib",
     "lint": "jshint src || true",
-    "test": "mocha-phantomjs SpecRunner.html",
-    "build": "npm run lint & npm run test"
+    "babel": "babel src -d lib",
+    "test-only": "mocha-phantomjs SpecRunner.html",
+    "test": "npm run clean & npm run babel & npm run test-only",
+    "build": "npm run clean & npm run lint & npm run babel & npm run test"
   }
 }

@@ -19,11 +19,12 @@
 
   <!-- include source files here... -->
   <script src="node_modules/seedrandom/seedrandom.min.js"></script>
-  <script src="src/PrototypicalInheritanceObjectCreate.js"></script>
-  <script src="src/RandomChart.js"></script>
-  <script src="src/DiceChart.js"></script>
-  <script src="src/charts/UniqueTavernTraits.js"></script>
-  <script src="src/charts/TavernMenuItems.js"></script>
+  <script src="lib/RandomChart.js"></script>
+  <script src="lib/DiceChart.js"></script>
+  <!--<script src="src/ChainableChart.js"></script>-->
+  <script src="lib/charts/UniqueTavernTraits.js"></script>
+  <script src="lib/charts/TavernMenuItems.js"></script>
+  <script src="lib/charts/TavernMenuItemsWithPrices.js"></script>
 
   <!-- include spec helper files here... -->
   <script src="spec/RandomChartSpecHelper.js"></script>
@@ -31,8 +32,10 @@
   <!-- include spec files here... -->
   <script src="spec/RandomChartSpec.js"></script>
   <script src="spec/DiceChartSpec.js"></script>
+  <!--<script src="spec/ChainableChartSpec.js"></script>-->
   <script src="spec/charts/UniqueTavernTraitsSpec.js"></script>
   <script src="spec/charts/TavernMenuItemsSpec.js"></script>
+  <script src="spec/charts/TavernMenuItemsWithPricesSpec.js"></script>
   <script>
     mocha.run();
   </script>
