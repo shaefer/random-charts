@@ -1,5 +1,7 @@
 # Random Charts #
 
+[ ![Codeship Status for danielshaefer/random-charts](https://codeship.com/projects/c4d11720-fa8b-0133-1b2b-7a7dffd8f75f/status?branch=master)](https://codeship.com/projects/151624)
+
 A small library for the easy creation of random charts.
 
 ## Setup
