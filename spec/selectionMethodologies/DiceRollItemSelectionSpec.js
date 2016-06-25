@@ -1,3 +1,7 @@
+var DiceRollItemSelection = require('../../src/selectionMethodologies/DiceRollItemSelection'),
+    seedrandom = require('seedrandom'),
+    expect = require('chai').expect;
+
 describe('DiceRollItemSelectionSpec', function() {
   describe('getItem', function () {
     it('should randomly select an item evenly distributed', function() {
@@ -22,7 +26,7 @@ describe('DiceRollItemSelectionSpec', function() {
   describe('rollDice', function () {
     it('should have result object with total and individual die results.', function() {
       var rollMethod = new DiceRollItemSelection(2, 6)
-      var results = rollMethod.rollDice(2, 6, new Math.seedrandom("Fixed"));
+      var results = rollMethod.rollDice(2, 6, seedrandom("Fixed"));
       expect(results.diceRolled.length).to.eql(2);
       expect(results.diceRolled[0]).to.eql(4);
       expect(results.diceRolled[1]).to.eql(2);

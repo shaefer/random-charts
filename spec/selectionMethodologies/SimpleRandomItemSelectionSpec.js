@@ -1,3 +1,6 @@
+var SimpleRandomItemSelection = require('../../src/selectionMethodologies/SimpleRandomItemSelection'),
+    expect = require('chai').expect;
+
 describe('SimpleRandomItemSelectionSpec', function() {
   describe('getItem', function () {
     it('should randomly select an item evenly distributed', function() {

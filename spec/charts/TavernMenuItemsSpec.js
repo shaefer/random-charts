@@ -1,3 +1,7 @@
+var TavernMenuItems = require('../../src/charts/TavernMenuItems'),
+    RandomChartSpec = require('../RandomChartSpecHelper'),
+    expect = require('chai').expect;
+
 describe('TavernMenuItems', function() {
   it('should return same result', function() {
     var chart = new TavernMenuItems();

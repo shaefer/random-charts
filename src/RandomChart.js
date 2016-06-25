@@ -1,18 +1,16 @@
-class RandomChart {
+var SimpleRandomItemSelection = require('./selectionMethodologies/SimpleRandomItemSelection'),
+    seedrandom = require('seedrandom');
+
+module.exports = class RandomChart {
   constructor(chartName, itemList, randomSeed, itemSelectionMethod = new SimpleRandomItemSelection()) {
     this.chartName = chartName;
     this.items = itemList;
-    this.random = Math.random;
 
-    if (Math.seedrandom) {
-        if (randomSeed) {
-          this.random = new Math.seedrandom(randomSeed);
-          this.randomSeed = randomSeed;
-        } else {
-          this.random = new Math.seedrandom();
-        }
+    if (randomSeed) {
+      this.random = seedrandom(randomSeed);
+      this.randomSeed = randomSeed;
     } else {
-        console.warn("Math.seedrandom function is missing. Seedrandom library (https://github.com/davidbau/seedrandom) most likely has not been loaded. This will gracefully fallback to Math.random() behavior.");
+      this.random = seedrandom();
     }
 
     this.itemSelectionMethod = itemSelectionMethod;
@@ -26,4 +24,4 @@ class RandomChart {
     }
     return selectedItems;
   }
-}
+};

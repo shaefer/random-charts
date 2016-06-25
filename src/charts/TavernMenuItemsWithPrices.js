@@ -1,4 +1,6 @@
-class TavernMenuItemsWithPrices extends RandomChart {
+var RandomChart = require('../RandomChart');
+
+module.exports = class TavernMenuItemsWithPrices extends RandomChart {
   constructor(randomSeed) {
     var items = [
       {name:"Apple cake", price: "2 cp"},
@@ -10,4 +12,4 @@ class TavernMenuItemsWithPrices extends RandomChart {
     ];
     super("TavernMenuItemsWithPrices", items, randomSeed);
   }
-}
+};

@@ -1,4 +1,4 @@
-class DiceRollItemSelection {
+module.exports = class DiceRollItemSelection {
   constructor(numOfDice, numOfSides) {
     this.numOfDice = numOfDice;
     this.numOfSides = numOfSides;
@@ -32,4 +32,4 @@ class DiceRollItemSelection {
     var item = items[index];
     return {index:index, item:item, rollResults:results};
   }
-}
+};

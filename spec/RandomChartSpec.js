@@ -1,3 +1,7 @@
+var RandomChart = require('../src/RandomChart'),
+    RandomChartSpec = require('./RandomChartSpecHelper'),
+    expect = require('chai').expect;
+
 describe('RandomChart', function() {
   describe('create', function () {
     it('should create a new class that can be instantiated and results returned', function() {

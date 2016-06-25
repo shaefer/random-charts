@@ -1,4 +1,6 @@
-class UniqueTavernTraits extends RandomChart {
+var RandomChart = require('../RandomChart');
+
+module.exports = class UniqueTavernTraits extends RandomChart {
   constructor(randomSeed) {
     var items = [
       "Only opens on public holidays",
@@ -49,4 +51,4 @@ class UniqueTavernTraits extends RandomChart {
     ];
     super("UniqueTavernTraits", items, randomSeed);
   }
-}
+};

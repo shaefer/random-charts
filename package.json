@@ -1,23 +1,21 @@
 {
   "name": "randomcharts",
   "devDependencies": {
-    "jshint": "latest",
-    "browserify": "latest",
+    "babel-cli": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-register": "^6.9.0",
     "chai": "latest",
-    "mocha": "latest",
-    "mocha-phantomjs": "latest"
+    "jshint": "latest",
+    "mocha": "latest"
   },
   "dependencies": {
-    "seedrandom": "latest",
-    "scriber-js": "latest",
-    "babel-cli": "latest",
-    "babel-preset-es2015": "latest"
+    "seedrandom": "latest"
   },
   "scripts": {
     "clean": "rm -rf lib",
     "lint": "jshint src || true",
     "babel": "babel src -d lib",
-    "test-only": "mocha-phantomjs SpecRunner.html",
+    "test-only": "mocha ./spec --compilers js:babel-register --recursive",
     "test": "npm run clean & npm run babel & npm run test-only",
     "build": "npm run clean & npm run lint & npm run babel & npm run test"
   }
