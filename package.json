@@ -1,5 +1,19 @@
 {
-  "name": "randomcharts",
+  "name": "random-charts",
+  "version": "0.0.1",
+  "description": "Library for creating random tables and random charts for role playing games (rpgs).",
+  "main": "index.js",
+  "keywords": [
+    "random",
+    "encounter tables",
+    "random charts",
+    "random tables",
+    "d&d",
+    "rpg"
+  ],
+  "repository": "bitbucket:danielshaefer/random-charts",
+  "author": "Daniel Shaefer",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "latest",
     "babel-preset-es2015": "latest",
