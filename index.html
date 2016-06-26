@@ -31,26 +31,33 @@
 <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h2>
 
 <ul>
+<li>Assumes node installed</li>
 <li>npm install</li>
 <li>npm run build (jshint, clean, babel, test)</li>
 </ul>
 
 <h2>
-<a id="to-make-a-new-random-chart-and-get-a-random-item" class="anchor" href="#to-make-a-new-random-chart-and-get-a-random-item" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To make a new random chart and get a random item</h2>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage Examples</h2>
 
 <p>Note: Items in a chart can be just Strings or a deep object. (See tests in the charts folder.)</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-c">//Basic Chart (basic items selection = equal chance of all items)</span>
 <span class="pl-k">var</span> items <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>Item1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Item2<span class="pl-pds">"</span></span>];
 <span class="pl-k">var</span> chart <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">RandomChart</span>(<span class="pl-s"><span class="pl-pds">"</span>NewChartName<span class="pl-pds">"</span></span>, items);
-<span class="pl-k">var</span> randomSelection <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>();</pre></div>
+<span class="pl-k">var</span> singleItem <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>();
+<span class="pl-k">var</span> sixItems <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>(<span class="pl-c1">6</span>);</pre></div>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-c">//Basic Chart with items selected by Rolling Dice (Bell curve)</span>
-<span class="pl-k">var</span> diceItems <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>Roll2<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Roll3<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Roll4<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Roll5<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Roll6<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Roll7<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Roll8<span class="pl-pds">"</span></span>];
-<span class="pl-k">var</span> diceChart <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">RandomChart</span>(<span class="pl-s"><span class="pl-pds">"</span>DiceChart<span class="pl-pds">"</span></span>, diceItems, <span class="pl-s"><span class="pl-pds">"</span>MyRandomSeed<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-en">DiceRollItemSelection</span>(<span class="pl-c1">2</span>, <span class="pl-c1">4</span>);
-<span class="pl-k">var</span> randomSelection <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>(); <span class="pl-c">//results are a bell curve due to rolling 2d4 to get an item from the chart.</span></pre></div>
+<p>Example showing item selection with dice rolling. More than 1 die rolled produces a bell curve. <a href="http://anydice.com/program/4d6">2d4 Bell curve from AnyDice</a></p>
 
-<pre><code>[
+<div class="highlight highlight-source-js"><pre><span class="pl-c">//Basic Chart with items selected by Rolling Dice (2d4 Bell curve)</span>
+<span class="pl-k">var</span> diceItems <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>4<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>5<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>6<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>7<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>8<span class="pl-pds">"</span></span>];
+<span class="pl-k">var</span> selectionStrategy2d4 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">DiceRollItemSelection</span>(<span class="pl-c1">2</span>, <span class="pl-c1">4</span>);
+<span class="pl-k">var</span> diceChart <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">RandomChart</span>(<span class="pl-s"><span class="pl-pds">"</span>DiceChart<span class="pl-pds">"</span></span>, diceItems, <span class="pl-s"><span class="pl-pds">"</span>randSeed<span class="pl-pds">"</span></span>, selectionStrategy2d4;
+<span class="pl-k">var</span> singleDiceItem <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>(); <span class="pl-c">//rolled 2d4 to get an item from the chart.</span>
+<span class="pl-k">var</span> sixDiceItems <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>(<span class="pl-c1">6</span>);</pre></div>
+
+<pre><code>//chart result example
+[
   {
     "index": 1,
     "item": "Item2"
