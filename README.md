@@ -1,6 +1,6 @@
 # Random Charts #
 
-[ ![Codeship Status for danielshaefer/random-charts](https://codeship.com/projects/c4d11720-fa8b-0133-1b2b-7a7dffd8f75f/status?branch=master)](https://codeship.com/projects/151624)
+[ ![Codeship Status for shaefer/random-charts](https://codeship.com/projects/84bbc1a0-1df9-0134-65af-1e312222cad2/status?branch=master)](https://codeship.com/projects/160049)
 [ ![npm version](https://badge.fury.io/js/random-charts.png)](https://badge.fury.io/js/random-charts)
 
 A small library for the easy creation of random charts.
