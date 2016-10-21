@@ -1,7 +1,7 @@
-module.exports = class SimpleRandomItemSelection {
+export default class SimpleRandomItemSelection {
   getItem(items, random) {
-    var index = Math.floor(random() * items.length);
-    var item = items[index];
+    const index = Math.floor(random() * items.length);
+    const item = items[index];
     return {index:index, item:item};
   }
 };

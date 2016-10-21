@@ -1,12 +1,12 @@
-var SimpleRandomItemSelection = require('./selectionMethodologies/SimpleRandomItemSelection'),
-    seedrandom = require('seedrandom'),
-    RandomChart = require('./RandomChart');
+import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection'
+import seedrandom from 'seedrandom'
+import RandomChart from './RandomChart'
 
-module.exports = class LinkedChart {
+export default class LinkedChart {
     constructor(chartName, items, subTables, randomSeed, itemSelectionMethod = new SimpleRandomItemSelection()) {
         this.chartName = chartName;
         this.items = items;
-        var linkedCharts = {};
+        let linkedCharts = {};
         subTables.forEach(function(table) {
           if (table.linked)
             linkedCharts[table.name] = new LinkedChart(table.name, table.items, table.subTables, randomSeed, itemSelectionMethod);
@@ -33,10 +33,11 @@ module.exports = class LinkedChart {
             let item = this.itemSelectionMethod.getItem(items, this.random);
             if (item.item.linkedTable) {
                 //item.linkDescription will have the text `Roll on Table "Magic Items"`
-                item.result = this.linkedCharts[item.item.linkedTable].get(item.item.times || 1);
+                item.subResults = this.linkedCharts[item.item.linkedTable].get(item.item.times || 1);
             }
             selectedItems.push(item);
         }
-        return selectedItems;
+        //flatten deep results
+        return {results: selectedItems};
     }
 };

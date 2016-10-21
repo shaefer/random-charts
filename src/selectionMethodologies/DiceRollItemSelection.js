@@ -1,35 +1,35 @@
-module.exports = class DiceRollItemSelection {
+export function add(a, b) {
+    return a + b;
+}
+
+export function rollDice(numOfDice, numOfSides, random) {
+    let diceRolled = [];
+    for(let i = 0; i<numOfDice; i++) {
+        const dieRoll = Math.floor(random() * numOfSides) + 1;
+        diceRolled.push(dieRoll);
+    }
+
+    const sum = diceRolled.reduce(add, 0);
+    const result = {total: sum, diceRolled: diceRolled};
+    return result;
+}
+
+export default class DiceRollItemSelection {
   constructor(numOfDice, numOfSides) {
     this.numOfDice = numOfDice;
     this.numOfSides = numOfSides;
   }
 
-  add(a, b) {
-      return a + b;
-  }
-
-  rollDice(numOfDice, numOfSides, random) {
-    var diceRolled = [];
-    for(var i = 0;i<numOfDice;i++) {
-      var dieRoll = Math.floor(random() * numOfSides) + 1;
-      diceRolled.push(dieRoll);
-    }
-
-    var sum = diceRolled.reduce(this.add, 0);
-    var result = {total: sum, diceRolled: diceRolled};
-    return result;
-  }
-
   getItem(items, random) {
-    var numOfDice = this.numOfDice;
-    var numOfSides = this.numOfSides;
-    var numOfItemsPossibleWithDice = (numOfDice * numOfSides) - numOfDice + 1;
+    const numOfDice = this.numOfDice;
+    const numOfSides = this.numOfSides;
+    const numOfItemsPossibleWithDice = (numOfDice * numOfSides) - numOfDice + 1;
     if (numOfItemsPossibleWithDice != items.length)
       throw new Error("A chart of "+numOfDice+"d"+numOfSides+" items should have "+numOfItemsPossibleWithDice+" items. You have specified "+items.length+".");
 
-    var results = this.rollDice(numOfDice, numOfSides, random);
-    var index = results.total - numOfDice;
-    var item = items[index];
+    const results = rollDice(numOfDice, numOfSides, random);
+    const index = results.total - numOfDice;
+    const item = items[index];
     return {index:index, item:item, rollResults:results};
   }
 };
