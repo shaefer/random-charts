@@ -1,7 +1,7 @@
-var SimpleRandomItemSelection = require('./selectionMethodologies/SimpleRandomItemSelection'),
-    seedrandom = require('seedrandom');
+import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection'
+import seedrandom from 'seedrandom'
 
-module.exports = class RandomChart {
+export default class RandomChart {
   constructor(chartName, itemList, randomSeed, itemSelectionMethod = new SimpleRandomItemSelection()) {
     this.chartName = chartName;
     this.items = itemList;
@@ -17,11 +17,11 @@ module.exports = class RandomChart {
   }
 
   get(times = 1) {
-    var items = this.items;
-    var selectedItems = [];
-    for(var i = 0;i<times;i++) {
+    const items = this.items;
+    let selectedItems = [];
+    for(let i = 0; i<times; i++) {
         selectedItems.push(this.itemSelectionMethod.getItem(items, this.random));
     }
-    return selectedItems;
+    return {results: selectedItems};
   }
 };
