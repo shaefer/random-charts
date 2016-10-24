@@ -1,6 +1,6 @@
-import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection'
-import seedrandom from 'seedrandom'
-import RandomChart from './RandomChart'
+import seedrandom from 'seedrandom';
+import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection';
+import RandomChart from './RandomChart';
 
 export default class LinkedChart {
     constructor(chartName, items, subTables, randomSeed, itemSelectionMethod = new SimpleRandomItemSelection()) {
@@ -40,4 +40,4 @@ export default class LinkedChart {
         //flatten deep results
         return {results: selectedItems};
     }
-};
+}

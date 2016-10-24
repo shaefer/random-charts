@@ -1,6 +1,5 @@
 const tavernMenuItemsWithPrices = require('../../data/charts/TavernMenuItemsWithPrices.json');
 import RandomChart from '../../src/RandomChart'
-import {describe, it} from "mocha";
 import * as RandomChartSpec from '../RandomChartSpecHelper'
 import { expect } from 'chai'
 

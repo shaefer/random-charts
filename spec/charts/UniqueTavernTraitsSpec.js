@@ -2,7 +2,6 @@ const uniqueTavernTraits = require('../../data/charts/UniqueTavernTraits.json');
 import RandomChart from '../../src/RandomChart'
 import * as RandomChartSpec from '../RandomChartSpecHelper'
 import { expect } from 'chai'
-import { describe, it} from "mocha";
 
 describe('UniqueTavernTraits', function() {
   it('should return same result', function() {

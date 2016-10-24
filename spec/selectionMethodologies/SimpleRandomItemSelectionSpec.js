@@ -1,6 +1,5 @@
 import SimpleRandomItemSelection from '../../src/selectionMethodologies/SimpleRandomItemSelection'
 import { expect } from 'chai'
-import {describe, it} from "mocha";
 
 describe('SimpleRandomItemSelectionSpec', function() {
   describe('getItem', function () {

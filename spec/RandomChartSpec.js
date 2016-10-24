@@ -1,7 +1,6 @@
 import RandomChart from '../src/RandomChart'
 import * as RandomChartSpec from './RandomChartSpecHelper'
 import { expect } from 'chai'
-import {describe, it} from "mocha";
 
 describe('RandomChart', function() {
   describe('create', function () {

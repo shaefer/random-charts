@@ -1,5 +1,5 @@
-import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection'
-import seedrandom from 'seedrandom'
+import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection';
+import seedrandom from 'seedrandom';
 
 export default class RandomChart {
   constructor(chartName, itemList, randomSeed, itemSelectionMethod = new SimpleRandomItemSelection()) {
@@ -24,4 +24,4 @@ export default class RandomChart {
     }
     return {results: selectedItems};
   }
-};
+}

@@ -2,7 +2,6 @@ import {add, rollDice} from '../../src/selectionMethodologies/DiceRollItemSelect
 import DiceRollItemSelection from '../../src/selectionMethodologies/DiceRollItemSelection'
 import seedrandom from 'seedrandom'
 import { expect } from 'chai'
-import {describe, it} from "mocha";
 
 describe('DiceRollItemSelectionSpec', function() {
   describe('getItem', function () {

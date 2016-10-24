@@ -1,7 +1,6 @@
 import LinkedChart from '../src/LinkedChart';
 import * as RandomChartSpec from './RandomChartSpecHelper';
 import { expect } from 'chai';
-import {describe, it} from "mocha";
 
 describe('LinkedChart', function() {
   describe('rolling on LinkedChart', function () {

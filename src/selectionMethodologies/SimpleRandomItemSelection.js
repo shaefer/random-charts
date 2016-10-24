@@ -4,4 +4,4 @@ export default class SimpleRandomItemSelection {
     const item = items[index];
     return {index:index, item:item};
   }
-};
+}
