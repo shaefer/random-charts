@@ -20,17 +20,17 @@
     "babel-register": "^6.9.0",
     "chai": "^3.5.0",
     "jshint": "^2.9.4",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.4"
   },
   "dependencies": {
     "seedrandom": "^2.4.2"
   },
   "scripts": {
-    "clean": "rm -rf lib",
+    "clean": "rimraf lib",
     "lint": "jshint src || true",
     "babel": "babel src -d lib",
     "test-only": "mocha ./spec --compilers js:babel-register --recursive",
-    "test": "npm run clean & npm run babel & npm run test-only",
-    "build": "npm run clean & npm run lint & npm run babel & npm run test"
+    "test": "npm run clean && npm run babel && npm run lint & npm run test-only"
   }
 }
