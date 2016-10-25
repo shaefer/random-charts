@@ -23,6 +23,6 @@ export default class RandomChart {
     for(let i = 0; i<times; i++) {
         selectedItems.push(this.itemSelectionMethod.getItem(items, this.random));
     }
-    return new ChartOutput(this.chartName, selectedItems, times);
+    return new ChartOutput(selectedItems);
   }
 }

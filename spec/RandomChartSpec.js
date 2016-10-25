@@ -36,10 +36,8 @@ describe('ChartsWithRandomSeed', function() {
         let chart2Output = chart2.get(3);
         const chart1Results = chart1Output.results;
         const chart2Results = chart2Output.results;
-       expect(chart1Output.chartName).to.eql(chart1Name);
-       expect(chart2Output.chartName).to.eql(chart2Name);
-       expect(chart1Output.timesRolled).to.eql(3);
-       expect(chart2Output.timesRolled).to.eql(3);
+       // expect(chart1Output.timesRolled).to.eql(3);
+       // expect(chart2Output.timesRolled).to.eql(3);
        expect(chart1Results.length).to.eql(3);
        expect(chart1Results).to.eql(chart2Results);
     });

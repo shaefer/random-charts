@@ -20,7 +20,7 @@ describe('LinkedChart', function() {
       const chart = new LinkedChart(mainTable.name, mainTable.items, [subTable], randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
       const item = RandomChartSpec.verifyGet(chart);
       const result = item.results[0];
-        expect(result.index).to.be.eql(3);
+      expect(result.index).to.be.eql(3);
     });
   });
 
@@ -41,7 +41,6 @@ describe('LinkedChart', function() {
           const item = RandomChartSpec.verifyGet(chart);
           const result = item.results[0];
           expect(result.index).to.be.eql(3);
-          expect(result.subResults.results[0].index).to.be.eql(2);
       });
 
       it('should roll multiple times when selecting an item referencing itself with a `times` field', function () {
@@ -61,10 +60,7 @@ describe('LinkedChart', function() {
           const item = RandomChartSpec.verifyGet(chart);
           const result = item.results[0];
           expect(result.index).to.be.eql(3);
-          expect(result.subResults.results.length).to.be.eql(2);
-          expect(result.subResults.results[0].index).to.be.eql(2);
-          expect(result.subResults.results[1].index).to.be.eql(3);
-          console.log(item.getFlattenedResults());
+          expect(item.results.length).to.be.eql(7);
       });
   });
 });

@@ -18,7 +18,7 @@ export default class LinkedChart {
         this.linkedCharts = linkedCharts;
 
         if (randomSeed) {
-            this.random = seedrandom(randomSeed);
+            this.random = new seedrandom(randomSeed);
             this.randomSeed = randomSeed;
         } else {
             this.random = seedrandom();
@@ -32,13 +32,14 @@ export default class LinkedChart {
         let selectedItems = [];
         for(let i = 0;i<times;i++) {
             let item = this.itemSelectionMethod.getItem(items, this.random);
+            item.chartName = this.chartName;
+            selectedItems.push(item);
             if (item.result.linkedTable) {
                 //item.linkDescription will have the text `Roll on Table "Magic Items"`
-                item.subResults = this.linkedCharts[item.result.linkedTable].get(item.result.times || 1);
+                let subResults = this.linkedCharts[item.result.linkedTable].get(item.result.times);
+                Array.prototype.push.apply(selectedItems, subResults.results);
             }
-            selectedItems.push(item);
         }
-        //flatten deep results
-        return new ChartOutput(this.chartName, selectedItems, times);
+        return new ChartOutput(selectedItems);
     }
 }
