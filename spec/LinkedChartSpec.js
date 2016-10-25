@@ -18,7 +18,8 @@ describe('LinkedChart', function() {
 
       const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
       const chart = new LinkedChart(mainTable.name, mainTable.items, [subTable], randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
-      const result = RandomChartSpec.verifyGet(chart);
+      const item = RandomChartSpec.verifyGet(chart);
+      const result = item.results[0];
         expect(result.index).to.be.eql(3);
     });
   });
@@ -37,7 +38,8 @@ describe('LinkedChart', function() {
 
           const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
           const chart = new LinkedChart(mainTable.name, mainTable.items, [], randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
-          const result = RandomChartSpec.verifyGet(chart);
+          const item = RandomChartSpec.verifyGet(chart);
+          const result = item.results[0];
           expect(result.index).to.be.eql(3);
           expect(result.subResults.results[0].index).to.be.eql(2);
       });
@@ -56,12 +58,13 @@ describe('LinkedChart', function() {
 
           const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
           const chart = new LinkedChart(mainTable.name, mainTable.items, [], randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
-          const result = RandomChartSpec.verifyGet(chart);
+          const item = RandomChartSpec.verifyGet(chart);
+          const result = item.results[0];
           expect(result.index).to.be.eql(3);
           expect(result.subResults.results.length).to.be.eql(2);
           expect(result.subResults.results[0].index).to.be.eql(2);
           expect(result.subResults.results[1].index).to.be.eql(3);
-          console.log(result);
+          console.log(item.getFlattenedResults());
       });
   });
 });

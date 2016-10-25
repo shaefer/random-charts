@@ -31,7 +31,6 @@
     "babel": "babel src -d lib",
     "test-only": "mocha ./spec --compilers js:babel-register --recursive",
     "test": "npm run clean && npm run babel && npm run lint & npm run test-only",
-    "build": "npm test",
-    "prepublish": " //https://booker.codes/how-to-build-and-publish-es6-npm-modules-today-with-babel/"
+    "build": "npm test"
   }
 }

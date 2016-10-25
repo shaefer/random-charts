@@ -5,7 +5,7 @@ export function verifyGet(chart) {
     const item = items.results[0];
     expect(item.result).to.be.ok;
     expect(item.index).to.be.above(-1);
-    return item;
+    return items;
 }
 
 export function verifyMultipleGet(chart, times) {
