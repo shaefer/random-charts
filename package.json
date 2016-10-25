@@ -23,6 +23,7 @@
     "mocha": "^3.1.2"
   },
   "dependencies": {
+    "owlbear": "^0.1.0",
     "seedrandom": "^2.4.2"
   },
   "scripts": {
