@@ -1,6 +1,7 @@
 import seedrandom from 'seedrandom';
 import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection';
 import RandomChart from './RandomChart';
+import ChartOutput from './models/ChartOutput';
 
 export default class LinkedChart {
     constructor(chartName, items, subTables, randomSeed, itemSelectionMethod = new SimpleRandomItemSelection()) {
@@ -31,13 +32,13 @@ export default class LinkedChart {
         let selectedItems = [];
         for(let i = 0;i<times;i++) {
             let item = this.itemSelectionMethod.getItem(items, this.random);
-            if (item.item.linkedTable) {
+            if (item.result.linkedTable) {
                 //item.linkDescription will have the text `Roll on Table "Magic Items"`
-                item.subResults = this.linkedCharts[item.item.linkedTable].get(item.item.times || 1);
+                item.subResults = this.linkedCharts[item.result.linkedTable].get(item.result.times || 1);
             }
             selectedItems.push(item);
         }
         //flatten deep results
-        return {results: selectedItems};
+        return new ChartOutput(this.chartName, selectedItems, times);
     }
 }
