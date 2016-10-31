@@ -35,8 +35,6 @@ const mapResolver = (random, i) => {
 };
 
 const evalOwlbearResult = (originalResult, random) => {
-    console.log("OWLBEAR ITEMS");
-    console.log(originalResult);
     let result = originalResult.slice();
     if (result.length == 1) {
         return resolveToNumOrOperator(result[0], random);
@@ -47,7 +45,6 @@ const evalOwlbearResult = (originalResult, random) => {
         let itemsToEval = result.splice(0, 3);
         itemsToEval = itemsToEval.map(mapResolver.bind(null, random));
         result.unshift(math(itemsToEval[0], itemsToEval[1], itemsToEval[2]));
-        console.log(result);
     }
     return result[0];
 };
