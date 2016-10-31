@@ -6,5 +6,9 @@ export default class DiceNotationValueChartData {
         this.label = label;
         this.rollDiceNotation = RollDiceNotation;
     }
+
+    getValue(randomSeed) {
+        return this.rollDiceNotation(this.value, randomSeed);
+    }
 }
 
