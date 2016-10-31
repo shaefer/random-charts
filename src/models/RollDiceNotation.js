@@ -12,6 +12,9 @@ const math = (a, operator, b) => {
     if (operator == '*') {
         return a * b;
     }
+    if (operator == '/') {
+        return a / b;
+    }
 };
 
 const resolveToNumOrOperator = (item, random) => {
@@ -24,6 +27,7 @@ const resolveToNumOrOperator = (item, random) => {
     if (item.operator) {
         return item.operator;
     }
+    return item;
 };
 
 const mapResolver = (random, i) => {
@@ -31,13 +35,19 @@ const mapResolver = (random, i) => {
 };
 
 const evalOwlbearResult = (originalResult, random) => {
+    console.log("OWLBEAR ITEMS");
+    console.log(originalResult);
     let result = originalResult.slice();
+    if (result.length == 1) {
+        return resolveToNumOrOperator(result[0], random);
+    }
     while(result.length > 2) {
         if (result.length == 2)
             throw "Owlbear should not have only 2 items";
         let itemsToEval = result.splice(0, 3);
         itemsToEval = itemsToEval.map(mapResolver.bind(null, random));
         result.unshift(math(itemsToEval[0], itemsToEval[1], itemsToEval[2]));
+        console.log(result);
     }
     return result[0];
 };
