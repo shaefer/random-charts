@@ -57,6 +57,14 @@ const getRandomGenerator = (randomSeed) => {
     }
 };
 
+/**
+ * This could probably be simplified if we could find a way to simplify to basic math and use a math parser.
+ * The hitch there is that owlbear doesn't handle parentheses. If we could split out the die rolling portions and roll
+ * them in advance all results could then be handled with parens via a math parser.
+ * @param value
+ * @param randomSeed
+ * @constructor
+ */
 const RollDiceNotation = (value, randomSeed) => {
     const randomGenerator = getRandomGenerator(randomSeed);
     const parsedOwlbearResult = new Owlbear().parse(value);

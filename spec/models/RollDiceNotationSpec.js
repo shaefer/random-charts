@@ -63,6 +63,12 @@ describe('RollDiceNotation', function() {
         expect(result).to.be.eql(52);
     });
 
+    it('should roll multiple dice with multiplication and addition with different order', function() {
+        const data = new RolledValueChartData("Ruby", "2d6+5*2", "gp");
+        const result = data.getValue("anotherRandomSeed12341234");
+        expect(result).to.be.eql(30);
+    });
+
     it('should roll multiple dice with operator between more dice', function() {
         const data = new RolledValueChartData("Ruby", "2d6*2d4", "gp");
         const result = data.getValue("anotherRandomSeed12341234");
