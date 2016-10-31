@@ -61,6 +61,8 @@ const getRandomGenerator = (randomSeed) => {
  * This could probably be simplified if we could find a way to simplify to basic math and use a math parser.
  * The hitch there is that owlbear doesn't handle parentheses. If we could split out the die rolling portions and roll
  * them in advance all results could then be handled with parens via a math parser.
+ * We could use regex to find all simple dice notations: (\d+)?d(\d+) and then resolve those and search again to resolve
+ * for any notations nested in parens like 4d(1d4)
  * @param value
  * @param randomSeed
  * @constructor
