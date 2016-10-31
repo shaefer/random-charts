@@ -26,15 +26,17 @@ const resolveToNumOrOperator = (item, random) => {
     }
 };
 
+const mapResolver = (random, i) => {
+    return resolveToNumOrOperator(i, random);
+};
+
 const evalOwlbearResult = (originalResult, random) => {
     let result = originalResult.slice();
     while(result.length > 2) {
         if (result.length == 2)
             throw "Owlbear should not have only 2 items";
         let itemsToEval = result.splice(0, 3);
-        itemsToEval = itemsToEval.map((i) => {
-            return resolveToNumOrOperator(i, random);
-        });
+        itemsToEval = itemsToEval.map(mapResolver.bind(null, random));
         result.unshift(math(itemsToEval[0], itemsToEval[1], itemsToEval[2]));
     }
     return result[0];
