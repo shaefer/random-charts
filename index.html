@@ -42,25 +42,62 @@
 <p>Note: Items in a chart can be just Strings or a deep object. (See tests in the charts folder.)</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-c">//Basic Chart (basic items selection = equal chance of all items)</span>
-<span class="pl-k">var</span> items <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>Item1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Item2<span class="pl-pds">"</span></span>];
-<span class="pl-k">var</span> chart <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">RandomChart</span>(<span class="pl-s"><span class="pl-pds">"</span>NewChartName<span class="pl-pds">"</span></span>, items);
-<span class="pl-k">var</span> singleItem <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>();
-<span class="pl-k">var</span> sixItems <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>(<span class="pl-c1">6</span>);</pre></div>
+<span class="pl-k">const</span> <span class="pl-c1">items</span> <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>Item1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Item2<span class="pl-pds">"</span></span>];
+<span class="pl-k">const</span> <span class="pl-c1">chart</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">RandomChart</span>(<span class="pl-s"><span class="pl-pds">"</span>NewChartName<span class="pl-pds">"</span></span>, items);
+<span class="pl-k">const</span> <span class="pl-c1">singleItem</span> <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-c1">get</span>();
+<span class="pl-k">const</span> <span class="pl-c1">sixItems</span> <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-c1">get</span>(<span class="pl-c1">6</span>);</pre></div>
 
 <p>Example showing item selection with dice rolling. More than 1 die rolled produces a bell curve. <a href="http://anydice.com/program/4d6">2d4 Bell curve from AnyDice</a></p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-c">//Basic Chart with items selected by Rolling Dice (2d4 Bell curve)</span>
-<span class="pl-k">var</span> diceItems <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>4<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>5<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>6<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>7<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>8<span class="pl-pds">"</span></span>];
-<span class="pl-k">var</span> selectionStrategy2d4 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">DiceRollItemSelection</span>(<span class="pl-c1">2</span>, <span class="pl-c1">4</span>);
-<span class="pl-k">var</span> diceChart <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">RandomChart</span>(<span class="pl-s"><span class="pl-pds">"</span>DiceChart<span class="pl-pds">"</span></span>, diceItems, <span class="pl-s"><span class="pl-pds">"</span>randSeed<span class="pl-pds">"</span></span>, selectionStrategy2d4;
-<span class="pl-k">var</span> singleDiceItem <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>(); <span class="pl-c">//rolled 2d4 to get an item from the chart.</span>
-<span class="pl-k">var</span> sixDiceItems <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-en">get</span>(<span class="pl-c1">6</span>);</pre></div>
+<span class="pl-k">const</span> <span class="pl-c1">diceItems</span> <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>4<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>5<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>6<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>7<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>8<span class="pl-pds">"</span></span>];
+<span class="pl-k">const</span> <span class="pl-c1">selectionStrategy2d4</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">DiceRollItemSelection</span>(<span class="pl-c1">2</span>, <span class="pl-c1">4</span>);
+<span class="pl-k">const</span> <span class="pl-c1">diceChart</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">RandomChart</span>(<span class="pl-s"><span class="pl-pds">"</span>DiceChart<span class="pl-pds">"</span></span>, diceItems, <span class="pl-s"><span class="pl-pds">"</span>randSeed<span class="pl-pds">"</span></span>, selectionStrategy2d4;
+<span class="pl-k">const</span> <span class="pl-c1">singleDiceItem</span> <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-c1">get</span>(); <span class="pl-c">//rolled 2d4 to get an item from the chart.</span>
+<span class="pl-k">const</span> <span class="pl-c1">sixDiceItems</span> <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-c1">get</span>(<span class="pl-c1">6</span>);</pre></div>
 
 <pre><code>//chart result example
 [
   {
     "index": 1,
     "item": "Item2"
+  }
+]
+</code></pre>
+
+<p>Example showing rolling a table that links to other tables.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">//LinkedChart (table with linked subtables..."roll deep")</span>
+<span class="pl-k">const</span> <span class="pl-c1">subTable</span> <span class="pl-k">=</span> {
+    linked<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>A SubTable<span class="pl-pds">"</span></span>,
+    items<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>Chart2-A<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Chart2-B<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Chart2-C<span class="pl-pds">"</span></span>]
+};
+<span class="pl-k">const</span> <span class="pl-c1">mainTable</span> <span class="pl-k">=</span> {
+    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Some Linked Chart<span class="pl-pds">"</span></span>,
+    items<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>Chart1-1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Chart1-2<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Chart1-3<span class="pl-pds">"</span></span>, {linkedTable<span class="pl-k">:</span><span class="pl-smi">subTable</span>.<span class="pl-c1">name</span>, description<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>Roll on Subtable: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-smi">subTable</span>.<span class="pl-c1">name</span>}]
+};
+
+<span class="pl-k">const</span> <span class="pl-c1">randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem</span> <span class="pl-k">=</span> <span class="pl-c1">3</span>; <span class="pl-c">//get the linkedItem to demonstrate rolling into subtables</span>
+<span class="pl-k">const</span> <span class="pl-c1">chart</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">LinkedChart</span>(<span class="pl-smi">mainTable</span>.<span class="pl-c1">name</span>, <span class="pl-smi">mainTable</span>.<span class="pl-smi">items</span>, [subTable], randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
+<span class="pl-k">const</span> <span class="pl-c1">singleItem</span> <span class="pl-k">=</span> <span class="pl-smi">chart</span>.<span class="pl-c1">get</span>(); <span class="pl-c">//</span></pre></div>
+
+<pre><code>//Linked chart result example
+[
+  { 
+    index: 3,
+    item:
+        { 
+            linkedTable: 'A SubTable',
+            description: 'Roll on Subtable: A SubTable' 
+        },
+    subResult: 
+    [ 
+        { 
+            index: 2, 
+            item: 'Chart2-C' 
+        } 
+    ] 
   }
 ]
 </code></pre>
