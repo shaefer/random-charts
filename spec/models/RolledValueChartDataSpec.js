@@ -1,7 +1,7 @@
 import RolledValueChartData from '../../src/models/RolledValueChartData';
 import { expect } from 'chai'
 
-describe('RollDiceNotation', function() {
+describe('RolledValueChartData', function() {
     it('should properly eval dice notation with seed', function() {
         const data = new RolledValueChartData("Ruby", "1d6+10", "gp");
         const result = data.getValue(2);
@@ -85,5 +85,11 @@ describe('RollDiceNotation', function() {
         const data = new RolledValueChartData("Ruby", "2d6 + 3 + 2d4 + 2 - 1 * 2", "gp");
         const result = data.getValue("anotherRandomSeed12341234");
         expect(result).to.be.eql(44);
+    });
+
+    it('should toString name, rolled value, and label', function() {
+        const data = new RolledValueChartData("Ruby", "2d6 + 3 + 2d4 + 2 - 1 * 2", "gp");
+        const result = data.toString("anotherRandomSeed12341234");
+        expect(result).to.be.eql("Ruby 44gp");
     });
 });

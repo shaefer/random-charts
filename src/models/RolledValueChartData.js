@@ -10,5 +10,9 @@ export default class DiceNotationValueChartData {
     getValue(randomSeed) {
         return this.rollDiceNotation(this.value, randomSeed);
     }
+
+    toString(randomSeed) {
+        return `${this.name} ${this.getValue(randomSeed)}${this.label}`;
+    }
 }
 
