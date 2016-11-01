@@ -1,4 +1,4 @@
-import RolledValueChartData from '../../../src/models/RolledValueChartData'
+import RolledValueChartData from '../../../src/models/DiceNotationValueChartData'
 
 const buildChartItems = (names) => {
     return names.map(buildItem)

@@ -2,6 +2,7 @@ import LinkedChart from '../src/LinkedChart';
 import * as RandomChartSpec from './RandomChartSpecHelper';
 import { expect } from 'chai';
 
+//TODO: Handle multiple items where one item is roll on another chart and the rest are raw results. http://paizo.com/pathfinderRPG/prd/ultimateEquipment/appendix.html#type-b-treasure-coins-and-gems-table
 describe('LinkedChart', function() {
   describe('rolling on LinkedChart', function () {
     it('should roll deeply when selecting an item referencing a linkedTable', function() {
@@ -26,7 +27,7 @@ describe('LinkedChart', function() {
 
   describe('rolling on LinkedChart pointing at itself', function () {
       it('should roll deeply when selecting an item referencing itself', function () {
-          const tableName = "Some Linked Chart"
+          const tableName = "Some Linked Chart";
           const mainTable = {
               linked: true,
               name: tableName,
@@ -44,7 +45,7 @@ describe('LinkedChart', function() {
       });
 
       it('should roll multiple times when selecting an item referencing itself with a `times` field', function () {
-          const tableName = "Some Linked Chart"
+          const tableName = "Some Linked Chart";
           const mainTable = {
               linked: true,
               name: tableName,
