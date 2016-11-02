@@ -1,6 +1,6 @@
 import Owlbear from 'owlbear';
 import {rollDice} from '../selectionMethodologies/DiceRollItemSelection';
-import seedrandom from 'seedrandom';
+import getRandomGenerator from './GetRandomGenerator';
 
 const math = (a, operator, b) => {
     if (operator == '+') {
@@ -49,13 +49,6 @@ const evalOwlbearResult = (originalResult, random) => {
     return result[0];
 };
 
-const getRandomGenerator = (randomSeed) => {
-    if (randomSeed) {
-        return seedrandom(randomSeed);
-    } else {
-        return seedrandom();
-    }
-};
 
 /**
  * This could probably be simplified if we could find a way to simplify to basic math and use a math parser.
@@ -64,11 +57,10 @@ const getRandomGenerator = (randomSeed) => {
  * We could use regex to find all simple dice notations: (\d+)?d(\d+) and then resolve those and search again to resolve
  * for any notations nested in parens like 4d(1d4)
  * @param value
- * @param randomSeed
+ * @param randomGenerator
  * @constructor
  */
-const RollDiceNotation = (value, randomSeed) => {
-    const randomGenerator = getRandomGenerator(randomSeed);
+const RollDiceNotation = (value, randomGenerator = getRandomGenerator()) => {
     const parsedOwlbearResult = new Owlbear().parse(value);
     return evalOwlbearResult(parsedOwlbearResult, randomGenerator);
 };
