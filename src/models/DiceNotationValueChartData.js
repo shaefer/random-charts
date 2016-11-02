@@ -57,4 +57,3 @@ export default class DiceNotationValueChartData {
         return `${this.name} ${rolledValue}${this.label}`;
     }
 }
-

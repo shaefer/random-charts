@@ -6,7 +6,8 @@ import { expect } from 'chai'
 
 describe('GemstonesGrade3', function() {
     it('should return gemstone item with rolled value', function() {
-        const chart = new RandomChart('Semi-Precious Gem (Craft DC 15)', GemstonesGrade3, "chartSeed");
+        const randomGeneratorForChart = getRandomGenerator("chartSeed");
+        const chart = new RandomChart('Semi-Precious Gem (Craft DC 15)', GemstonesGrade3, randomGeneratorForChart);
         const output = RandomChartSpec.verifyGet(chart);
         const randomGenerator = getRandomGenerator("seed");
         output.getResult().setRandomGenerator(randomGenerator);

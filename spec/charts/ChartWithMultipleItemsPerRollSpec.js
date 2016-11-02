@@ -6,7 +6,8 @@ import { expect } from 'chai';
 
 describe('ChartWithMultipleItemsPerRoll', function() {
     it('should return gemstone item with rolled value', function() {
-        const chart = new RandomChart('Chart with entries containing 3 items', ChartData, "chartSeed");
+        const randomGeneratorForChart = getRandomGenerator("chartSeed");
+        const chart = new RandomChart('Chart with entries containing 3 items', ChartData, randomGeneratorForChart);
         const output = RandomChartSpec.verifyGet(chart);
         const randomGenerator = getRandomGenerator("seed");
         output.getResult().forEach((i) => {

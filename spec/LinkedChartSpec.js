@@ -1,5 +1,6 @@
 import LinkedChart from '../src/LinkedChart';
 import * as RandomChartSpec from './RandomChartSpecHelper';
+import getRandomGenerator from '../src/models/GetRandomGenerator';
 import { expect } from 'chai';
 
 //TODO: Handle multiple items where one item is roll on another chart and the rest are raw results. http://paizo.com/pathfinderRPG/prd/ultimateEquipment/appendix.html#type-b-treasure-coins-and-gems-table
@@ -18,7 +19,8 @@ describe('LinkedChart', function() {
       };
 
       const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
-      const chart = new LinkedChart(mainTable.name, mainTable.items, [subTable], randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
+      const randomGenerator = getRandomGenerator(randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
+      const chart = new LinkedChart(mainTable.name, mainTable.items, [subTable], randomGenerator);
       const item = RandomChartSpec.verifyGet(chart);
       const result = item.results[0];
       expect(result.index).to.be.eql(3);
@@ -38,7 +40,8 @@ describe('LinkedChart', function() {
           };
 
           const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
-          const chart = new LinkedChart(mainTable.name, mainTable.items, [], randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
+          const randomGenerator = getRandomGenerator(randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
+          const chart = new LinkedChart(mainTable.name, mainTable.items, [], randomGenerator);
           const item = RandomChartSpec.verifyGet(chart);
           const result = item.results[0];
           expect(result.index).to.be.eql(3);
@@ -57,7 +60,8 @@ describe('LinkedChart', function() {
           };
 
           const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
-          const chart = new LinkedChart(mainTable.name, mainTable.items, [], randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
+          const randomGenerator = getRandomGenerator(randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
+          const chart = new LinkedChart(mainTable.name, mainTable.items, [], randomGenerator);
           const item = RandomChartSpec.verifyGet(chart);
           const result = item.results[0];
           expect(result.index).to.be.eql(3);

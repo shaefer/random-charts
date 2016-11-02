@@ -2,28 +2,23 @@ import seedrandom from 'seedrandom';
 import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection';
 import RandomChart from './RandomChart';
 import ChartOutput from './models/ChartOutput';
+import getRandomGenerator from './models/GetRandomGenerator';
 
 export default class LinkedChart {
-    constructor(chartName, items, subTables, randomSeed, itemSelectionMethod = new SimpleRandomItemSelection()) {
+    constructor(chartName, items, subTables, randomGenerator = getRandomGenerator(), itemSelectionMethod = new SimpleRandomItemSelection()) {
         this.chartName = chartName;
         this.items = items;
         let linkedCharts = {};
         subTables.forEach(function(table) {
           if (table.linked)
-            linkedCharts[table.name] = new LinkedChart(table.name, table.items, table.subTables, randomSeed, itemSelectionMethod);
+            linkedCharts[table.name] = new LinkedChart(table.name, table.items, table.subTables, randomGenerator, itemSelectionMethod);
           else
-            linkedCharts[table.name] = new RandomChart(table.name, table.items, randomSeed, itemSelectionMethod);
+            linkedCharts[table.name] = new RandomChart(table.name, table.items, randomGenerator, itemSelectionMethod);
         });
         linkedCharts[chartName] = this; //add reference to self so that tables can tell you to roll twice on this table.
         this.linkedCharts = linkedCharts;
 
-        if (randomSeed) {
-            this.random = new seedrandom(randomSeed);
-            this.randomSeed = randomSeed;
-        } else {
-            this.random = seedrandom();
-        }
-
+        this.random = randomGenerator;
         this.itemSelectionMethod = itemSelectionMethod;
     }
 

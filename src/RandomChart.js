@@ -1,19 +1,13 @@
 import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection';
-import seedrandom from 'seedrandom';
 import ChartOutput from './models/ChartOutput';
+import getRandomGenerator from './models/GetRandomGenerator';
+
 
 export default class RandomChart {
-  constructor(chartName, itemList, randomSeed, itemSelectionMethod = new SimpleRandomItemSelection()) {
+  constructor(chartName, itemList, randomGenerator = getRandomGenerator(), itemSelectionMethod = new SimpleRandomItemSelection()) {
     this.chartName = chartName;
     this.items = itemList;
-
-    if (randomSeed) {
-      this.random = seedrandom(randomSeed);
-      this.randomSeed = randomSeed;
-    } else {
-      this.random = seedrandom();
-    }
-
+    this.random = randomGenerator;
     this.itemSelectionMethod = itemSelectionMethod;
   }
 
