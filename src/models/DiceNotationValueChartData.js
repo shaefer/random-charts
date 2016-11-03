@@ -31,9 +31,8 @@ export default class DiceNotationValueChartData {
     }
 
     getRolledValue() {
-        if (!this.rolledValue) {
+        if (!this.rolledValue)
             this.rollValue();
-        }
         return this.rolledValue;
     }
 
