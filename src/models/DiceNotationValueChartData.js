@@ -5,7 +5,6 @@ const isArray = (o) => {
     return Object.prototype.toString.call(o) === '[object Array]';
 };
 
-
 const mapValues = (random, i) => {
     return RollDiceNotation(i, random);
 };
@@ -24,6 +23,7 @@ export default class DiceNotationValueChartData {
 
     /**
      * Allows the user to delay the setting until ready to retrieve.
+     * Always has a default generator in case the user doesn't care about seeding.
      * @param randomGenerator
      */
     setRandomGenerator(randomGenerator) {
@@ -38,22 +38,14 @@ export default class DiceNotationValueChartData {
     }
 
     rollValue() {
-        let rolledValue;
-        if (this.multiValue) {
-            rolledValue = this.value.map(mapValues.bind(null, this.randomGenerator));
-        }
-        else
-            rolledValue = this.rollDiceNotation(this.value, this.randomGenerator);
-        this.rolledValue = rolledValue;
+        this.rolledValue = this.multiValue ?
+            this.value.map(mapValues.bind(null, this.randomGenerator)) :
+            this.rollDiceNotation(this.value, this.randomGenerator);
         return this;
     }
 
     toString() {
-        const rolledValue = this.getRolledValue();
-        if (this.multiValue) {
-            const values = rolledValue.join(", ");
-            return `${this.name} ${values}${this.label}`;
-        }
+        const rolledValue = !this.multiValue ? this.getRolledValue() : this.getRolledValue().join(", ");
         return `${this.name} ${rolledValue}${this.label}`;
     }
 }
