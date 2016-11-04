@@ -9,13 +9,14 @@ describe('ChartWithMultipleItemsPerRoll', function() {
         const randomGeneratorForChart = getRandomGenerator("chartSeed");
         const chart = new RandomChart('Chart with entries containing 3 items', ChartData, randomGeneratorForChart);
         const output = RandomChartSpec.verifyGet(chart);
+        expect(output.results.length).to.eql(3);
         const randomGenerator = getRandomGenerator("seed");
-        output.getResult().forEach((i) => {
-            i.setRandomGenerator(randomGenerator);
+        output.results.forEach((i) => {
+            i.result.setRandomGenerator(randomGenerator);
         });
-        expect(output.getResult()[0].rollValue().toString()).to.be.eql("Agate 12gp");
-        expect(output.getResult()[1].rollValue().toString()).to.be.eql("Alabaster 9gp");
-        expect(output.getResult()[2].rollValue().toString()).to.be.eql("Azurite 10gp");
+        expect(output.getResult().rollValue().toString()).to.be.eql("Agate 12gp");
+        expect(output.getResult(1).rollValue().toString()).to.be.eql("Alabaster 9gp");
+        expect(output.getResult(2).rollValue().toString()).to.be.eql("Azurite 10gp");
 
         expect(chart.items.length).to.eql(2);
     });

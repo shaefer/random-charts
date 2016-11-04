@@ -1,4 +1,3 @@
-import seedrandom from 'seedrandom';
 import SimpleRandomItemSelection from './selectionMethodologies/SimpleRandomItemSelection';
 import RandomChart from './RandomChart';
 import ChartOutput from './models/ChartOutput';
@@ -33,7 +32,6 @@ export default class LinkedChart {
             /**If item has a linkedTable roll on the deeper table. If there are multiple items in the result we need to
             handle this too by pushing all the ready to go results to the list as well as the deeper roll **/
             if (item.result.linkedTable) {
-                //item.linkDescription will have the text `Roll on Table "Magic Items"`
                 let subResults = this.linkedCharts[item.result.linkedTable].get(item.result.times);
                 Array.prototype.push.apply(selectedItems, subResults.results);
             }

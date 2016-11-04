@@ -3,16 +3,6 @@ import getRandomGenerator from '../../src/models/GetRandomGenerator';
 import { expect } from 'chai'
 
 describe('DiceNotationValueChartData', function() {
-    it('should properly eval multiple values with dice notation with seed', function() {
-        const data = new DiceNotationValueChartData("Rubies", ["1d6+10", "1d4"], "gp");
-        const randomGenerator = getRandomGenerator(2);
-        data.setRandomGenerator(randomGenerator);
-        const result = data.getRolledValue();
-        expect(result[0]).to.be.eql(13);
-        expect(result[1]).to.be.eql(3);
-        expect(data.toString()).to.be.eql("Rubies 13, 3gp")
-    });
-
     it('should properly eval dice notation with seed', function() {
         const data = new DiceNotationValueChartData("Ruby", "1d6+10", "gp");
         const randomGenerator = getRandomGenerator(2);
