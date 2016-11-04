@@ -3,6 +3,14 @@ import RandomChart from './RandomChart';
 import ChartOutput from './models/ChartOutput';
 import getRandomGenerator from './models/GetRandomGenerator';
 
+const isArray = (o) => {
+    return Object.prototype.toString.call(o) === '[object Array]';
+};
+
+const convertToResult = (parentIndex, i) => {
+    return {index:parentIndex, result:i};
+};
+
 export default class LinkedChart {
     constructor(chartName, items, subTables, randomGenerator = getRandomGenerator(), itemSelectionMethod = new SimpleRandomItemSelection()) {
         this.chartName = chartName;
@@ -21,19 +29,38 @@ export default class LinkedChart {
         this.itemSelectionMethod = itemSelectionMethod;
     }
 
+    addChartName(chartName, item) {
+        item.chartName = chartName;
+    }
+
+    addLinkedChartResultsToSelectedItems(item, selectedItems) {
+        if (item.result.linkedTable) {
+            let subResults = this.linkedCharts[item.result.linkedTable].get(item.result.times);
+            subResults.results.map(this.addChartName.bind(null, item.result.linkedTable));
+            Array.prototype.push.apply(selectedItems, subResults.results);
+        } else {
+            this.addChartName(this.chartName, item);
+            selectedItems.push(item);
+        }
+    }
+
     get(times = 1) {
         const items = this.items;
         let selectedItems = [];
         for(let i = 0;i<times;i++) {
             let item = this.itemSelectionMethod.getItem(items, this.random);
-            item.chartName = this.chartName;
-            selectedItems.push(item);
-
-            /**If item has a linkedTable roll on the deeper table. If there are multiple items in the result we need to
-            handle this too by pushing all the ready to go results to the list as well as the deeper roll **/
-            if (item.result.linkedTable) {
-                let subResults = this.linkedCharts[item.result.linkedTable].get(item.result.times);
-                Array.prototype.push.apply(selectedItems, subResults.results);
+            /**
+             * Some charts return multiple results per entry. This helps with items that have multiple dice rolls such as a
+             * result with gold, silver, copper, and an art object. Complex charts.
+             */
+            if (isArray(item.result)) {
+                const multiItemResults = item.result.map(convertToResult.bind(null, item.index));
+                multiItemResults.forEach((mir) => {
+                    this.addLinkedChartResultsToSelectedItems(mir, selectedItems);
+                });
+            }
+            else {
+                this.addLinkedChartResultsToSelectedItems(item, selectedItems);
             }
         }
         return new ChartOutput(selectedItems);
