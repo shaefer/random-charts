@@ -33,10 +33,15 @@ export default class LinkedChart {
         item.chartName = chartName;
     }
 
+    addParentIndex(parentIndex, item) {
+        item.parentIndex = parentIndex;
+    }
+
     addLinkedChartResultsToSelectedItems(item, selectedItems) {
         if (item.result.linkedTable) {
             let subResults = this.linkedCharts[item.result.linkedTable].get(item.result.times);
             subResults.results.map(this.addChartName.bind(null, item.result.linkedTable));
+            subResults.results.map(this.addParentIndex.bind(null, item.index));
             Array.prototype.push.apply(selectedItems, subResults.results);
         } else {
             this.addChartName(this.chartName, item);

@@ -10,4 +10,4 @@ const buildItem = (name) => {
 
 const gemstoneNames = ["Agate", "Alabaster", "Azurite", "Hematite", "Lapis lazuli", "Malachite", "Obsidian", "Pearl, irregular freshwater", "Pyrite", "Rhodochrosite", "Quartz, rock crystal", "Shell", "Tigereye", "Turquoise"];
 
-export default {name: "Least Semi-Precious Gem (Craft DC 10)", items: buildChartItems(gemstoneNames)}
+export default {name: "Least Semi-Precious Gem", description:"Least Semi-Precious Gem (Craft DC 10)", items: buildChartItems(gemstoneNames)}
