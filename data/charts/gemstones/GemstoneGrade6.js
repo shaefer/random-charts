@@ -15,4 +15,4 @@ const gemstoneNames = [
     "Sapphire, star"
 ];
 
-export default buildChartItems(gemstoneNames)
+export default {name:"Greater Precious Gem (5,000gp; Craft DC 25)", items:buildChartItems(gemstoneNames)}

@@ -15,4 +15,4 @@ const gemstoneNames = [
     "Topaz"
 ];
 
-export default buildChartItems(gemstoneNames)
+export default {name:"Greater Semi-Precious Gem (Craft DC 20)", items:buildChartItems(gemstoneNames)}

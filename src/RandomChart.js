@@ -18,6 +18,10 @@ export default class RandomChart {
     this.itemSelectionMethod = itemSelectionMethod;
   }
 
+  addChartName(chartName, item) {
+      item.chartName = chartName;
+  }
+
   get(times = 1) {
     const items = this.items;
     let selectedItems = [];
@@ -30,10 +34,13 @@ export default class RandomChart {
          */
         if (isArray(item.result)) {
             const multiItemResults = item.result.map(convertToResult.bind(null, item.index));
+            multiItemResults.map(this.addChartName.bind(null, this.chartName));
             Array.prototype.push.apply(selectedItems, multiItemResults);
         }
-        else
+        else {
+            this.addChartName(this.chartName, item);
             selectedItems.push(item);
+        }
     }
     return new ChartOutput(selectedItems);
   }

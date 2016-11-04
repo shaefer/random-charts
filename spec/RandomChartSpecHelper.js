@@ -5,6 +5,7 @@ export function verifyGet(chart) {
     const item = items.results[0];
     expect(item.result).to.be.ok;
     expect(item.index).to.be.above(-1);
+    expect(item.chartName).to.be.ok;
     return items;
 }
 
@@ -14,6 +15,7 @@ export function verifyMultipleGet(chart, times) {
     items.results.forEach(function(item){
       expect(item.result).to.be.ok;
       expect(item.index).to.not.eql(-1);
+      expect(item.chartName).to.be.ok;
     });
     return items;
 }

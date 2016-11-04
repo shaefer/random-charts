@@ -25,4 +25,4 @@ const gemstoneNames = [
     "Zircon"
 ];
 
-export default buildChartItems(gemstoneNames)
+export default {name: "Lesser Semi-Precious Gem (Craft DC 12)", items: buildChartItems(gemstoneNames)}

@@ -20,9 +20,17 @@ describe('ChartsWithRandomSeed', function() {
        const randomGenerator = getRandomGenerator(seed);
        const randomGeneratorWithSameSeed = getRandomGenerator(seed);
        const items = ["One1", "Two2", "Three3"];
-       const chart1 = new RandomChart("chart1", items, randomGenerator);
-       const chart2 = new RandomChart("chart2", items, randomGeneratorWithSameSeed);
-      expect(chart1.get().results).to.eql(chart2.get().results);
+        let chartName1 = "chart1";
+        let chartName2 = "chart2";
+        const chart1 = new RandomChart(chartName1, items, randomGenerator);
+        const chart2 = new RandomChart(chartName2, items, randomGeneratorWithSameSeed);
+       const chart1Output = chart1.get();
+       const chart2Output = chart2.get();
+      expect(chart1Output.getResult()).to.eql(chart2Output.getResult());
+      expect(chart1Output.results[0].index).to.eql(chart2Output.results[0].index);
+      expect(chart1Output.results[0].index).to.eql(chart2Output.results[0].index);
+      expect(chart1Output.results[0].chartName).to.eql(chartName1);
+      expect(chart2Output.results[0].chartName).to.eql(chartName2);
     });
   });
   describe('get(3)', function() {

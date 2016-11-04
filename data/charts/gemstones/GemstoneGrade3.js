@@ -21,4 +21,4 @@ const gemstoneNames = [
     "Tourmaline"
 ];
 
-export default buildChartItems(gemstoneNames)
+export default {name:"Semi-Precious Gem (Craft DC 15)", items: buildChartItems(gemstoneNames)}
