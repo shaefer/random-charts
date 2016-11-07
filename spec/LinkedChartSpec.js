@@ -3,7 +3,6 @@ import * as RandomChartSpec from './RandomChartSpecHelper';
 import getRandomGenerator from '../src/models/GetRandomGenerator';
 import { expect } from 'chai';
 
-//TODO: Handle multiple items where one item is roll on another chart and the rest are raw results. http://paizo.com/pathfinderRPG/prd/ultimateEquipment/appendix.html#type-b-treasure-coins-and-gems-table
 describe('LinkedChart', function() {
   describe('rolling on LinkedChart', function () {
     it('should roll deeply when selecting an item referencing a linkedTable', function() {
