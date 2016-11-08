@@ -42,7 +42,7 @@ const sixDiceItems = chart.get(6);
 
 Example showing rolling a table that links to other tables.
 ```javascript
-//LinkedChart (table with linked subtables..."roll deep")
+RandomChart
 const subTable = {
     linked: false,
     name: "A SubTable",

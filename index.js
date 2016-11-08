@@ -1,5 +1,5 @@
 var RandomChart = require('./lib/RandomChart'),
-    LinkedChart = require('./lib/LinkedChart'),
+    LinkedChart = require('./lib/RandomChart'),
     DiceRollItemSelection = require('./lib/selectionMethodologies/DiceRollItemSelection'),
     SimpleRandomItemSelection = require('./lib/selectionMethodologies/SimpleRandomItemSelection');
 

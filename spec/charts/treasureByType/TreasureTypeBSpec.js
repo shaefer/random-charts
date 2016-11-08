@@ -1,5 +1,5 @@
 import TreasureTypeB from '../../../data/charts/treasureByType/TreasureTypeB';
-import LinkedChart from '../../../src/LinkedChart';
+import RandomChart from '../../../src/RandomChart';
 import * as RandomChartSpec from '../../RandomChartSpecHelper';
 import getRandomGenerator from '../../../src/models/GetRandomGenerator';
 import { expect } from 'chai';
@@ -11,7 +11,7 @@ describe('TreasureTypeB', function() {
 
         const tables = [TreasureTypeB].concat(TreasureTypeB.tables);
 
-        const chart = new LinkedChart(tables, randomGenerator);
+        const chart = new RandomChart(tables, randomGenerator);
         const item = RandomChartSpec.verifyGet(chart);
         console.log(item);
 

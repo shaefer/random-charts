@@ -1,5 +1,5 @@
 import GemstonesGrade3 from '../../../data/charts/gemstones/GemstoneGrade3';
-import LinkedChart from '../../../src/LinkedChart'
+import RandomChart from '../../../src/RandomChart'
 import * as RandomChartSpec from '../../RandomChartSpecHelper'
 import getRandomGenerator from '../../../src/models/GetRandomGenerator';
 import { expect } from 'chai'
@@ -7,7 +7,7 @@ import { expect } from 'chai'
 describe('GemstonesGrade3', function() {
     it('should return gemstone item with rolled value', function() {
         const randomGeneratorForChart = getRandomGenerator("chartSeed");
-        const chart = new LinkedChart([GemstonesGrade3], randomGeneratorForChart);
+        const chart = new RandomChart([GemstonesGrade3], randomGeneratorForChart);
         const output = RandomChartSpec.verifyGet(chart);
         const randomGenerator = getRandomGenerator("seed");
         output.getResult().setRandomGenerator(randomGenerator);

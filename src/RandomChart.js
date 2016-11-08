@@ -12,24 +12,26 @@ const convertToResult = (parentIndex, i) => {
 
 export default class LinkedChart {
     constructor(tables, randomGenerator = getRandomGenerator(), itemSelectionMethod = new SimpleRandomItemSelection()) {
-        const mainTable = tables[0];
-        this.chartName = mainTable.name;
-        this.items = mainTable.items;
-        let linkedCharts = {};
-        if (tables.length > 1) {
-            tables.forEach(function (table) {
-                if (table.linked) {
-                    if (table.tables)
-                        linkedCharts[table.name] = new LinkedChart(table.tables, randomGenerator, itemSelectionMethod);
-                    else //self referencing table
+        if (isArray(tables)) {
+            const mainTable = tables[0];
+            this.chartName = mainTable.name;
+            this.items = mainTable.items;
+            let linkedCharts = {};
+            if (tables.length > 1) {
+                tables.forEach(function (table) {
+                    if (table.linked) {
+                        if (table.tables)
+                            linkedCharts[table.name] = new LinkedChart(table.tables, randomGenerator, itemSelectionMethod);
+                        else //self referencing table
+                            linkedCharts[table.name] = new LinkedChart([table], randomGenerator, itemSelectionMethod);
+                    }
+                    else
                         linkedCharts[table.name] = new LinkedChart([table], randomGenerator, itemSelectionMethod);
-                }
-                else
-                    linkedCharts[table.name] = new LinkedChart([table], randomGenerator, itemSelectionMethod);
-            });
+                });
+            }
+            linkedCharts[this.chartName] = this; //add reference to self so that tables can tell you to roll twice on this table.
+            this.linkedCharts = linkedCharts;
         }
-        linkedCharts[this.chartName] = this; //add reference to self so that tables can tell you to roll twice on this table.
-        this.linkedCharts = linkedCharts;
 
         this.random = randomGenerator;
         this.itemSelectionMethod = itemSelectionMethod;

@@ -1,5 +1,5 @@
 import ChartData from '../../data/charts/ChartWithMultipleItemsPerRoll';
-import LinkedChart from '../../src/LinkedChart';
+import RandomChart from '../../src/RandomChart';
 import * as RandomChartSpec from '../RandomChartSpecHelper';
 import getRandomGenerator from '../../src/models/GetRandomGenerator';
 import DiceNotationValueChartData from '../../src/models/DiceNotationValueChartData';
@@ -9,7 +9,7 @@ describe('ChartWithMultipleItemsPerRoll', function() {
     it('should return gemstone item with rolled value', function() {
         const randomGeneratorForChart = getRandomGenerator("chartSeed");
         const chartObj = {name:'Chart with entries containing 3 items', items: ChartData};
-        const chart = new LinkedChart([chartObj], randomGeneratorForChart);
+        const chart = new RandomChart([chartObj], randomGeneratorForChart);
         const output = RandomChartSpec.verifyGet(chart);
         expect(output.results.length).to.eql(3);
         const randomGenerator = getRandomGenerator("seed");
@@ -41,7 +41,7 @@ describe('ChartWithMultipleItemsPerRoll', function() {
         const tables = [mainTable, subTable];
 
         const randomGeneratorForChart = getRandomGenerator("chartSeed");
-        const chart = new LinkedChart(tables, randomGeneratorForChart);
+        const chart = new RandomChart(tables, randomGeneratorForChart);
         const output = RandomChartSpec.verifyGet(chart);
         expect(output.results.length).to.eql(4); //single roll will always yield the only item of 4 results. But the entry saying roll on another table still counts.
         const randomGenerator = getRandomGenerator("seed");

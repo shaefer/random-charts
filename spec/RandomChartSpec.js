@@ -1,10 +1,10 @@
-import LinkedChart from '../src/LinkedChart';
+import RandomChart from '../src/RandomChart';
 import * as RandomChartSpec from './RandomChartSpecHelper';
 import getRandomGenerator from '../src/models/GetRandomGenerator';
 import { expect } from 'chai';
 
 describe('LinkedChart', function() {
-  describe('rolling on LinkedChart', function () {
+  describe('rolling on RandomChart', function () {
     it('should roll deeply when selecting an item referencing a linkedTable', function() {
       const subTable = {
           linked: false,
@@ -21,14 +21,14 @@ describe('LinkedChart', function() {
 
       const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
       const randomGenerator = getRandomGenerator(randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
-      const chart = new LinkedChart(tables, randomGenerator);
+      const chart = new RandomChart(tables, randomGenerator);
       const item = RandomChartSpec.verifyGet(chart);
       const result = item.results[0];
       expect(result.index).to.be.eql(1);
     });
   });
 
-  describe('rolling on LinkedChart pointing at itself', function () {
+  describe('rolling on RandomChart pointing at itself', function () {
       it('should roll deeply when selecting an item referencing itself', function () {
           const tableName = "Some Linked Chart";
           const mainTable = {
@@ -44,7 +44,7 @@ describe('LinkedChart', function() {
 
           const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
           const randomGenerator = getRandomGenerator(randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
-          const chart = new LinkedChart(tables, randomGenerator);
+          const chart = new RandomChart(tables, randomGenerator);
           const item = RandomChartSpec.verifyGet(chart);
           const result = item.results[0];
           expect(result.index).to.be.eql(2);
@@ -66,7 +66,7 @@ describe('LinkedChart', function() {
 
           const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 3;
           const randomGenerator = getRandomGenerator(randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
-          const chart = new LinkedChart(tables, randomGenerator);
+          const chart = new RandomChart(tables, randomGenerator);
           const item = RandomChartSpec.verifyGet(chart);
           const result = item.results[0];
           expect(result.index).to.be.eql(2);
@@ -79,7 +79,7 @@ describe('RandomChart', function() {
     describe('create', function () {
         it('should create a new class that can be instantiated and results returned', function() {
             const table = {name:"myChart", items:["One1", "Two2", "Three3"]};
-            const chart = new LinkedChart([table]);
+            const chart = new RandomChart([table]);
             RandomChartSpec.verifyGet(chart);
             RandomChartSpec.verifyMultipleGet(chart, 3);
         });
@@ -97,8 +97,8 @@ describe('ChartsWithRandomSeed', function() {
             let chartName2 = "chart2";
             const chart1Data = {name:chartName1, items: items};
             const chart2Data = {name:chartName2, items: items};
-            const chart1 = new LinkedChart([chart1Data], randomGenerator);
-            const chart2 = new LinkedChart([chart2Data], randomGeneratorWithSameSeed);
+            const chart1 = new RandomChart([chart1Data], randomGenerator);
+            const chart2 = new RandomChart([chart2Data], randomGeneratorWithSameSeed);
             const chart1Output = chart1.get();
             const chart2Output = chart2.get();
             expect(chart1Output.getResult()).to.eql(chart2Output.getResult());
@@ -118,8 +118,8 @@ describe('ChartsWithRandomSeed', function() {
             let chart2Name = "chart2";
             const chart1Data = {name:chart1Name, items: items};
             const chart2Data = {name:chart2Name, items: items};
-            const chart1 = new LinkedChart([chart1Data], randomGenerator);
-            const chart2 = new LinkedChart([chart2Data], randomGenerator);
+            const chart1 = new RandomChart([chart1Data], randomGenerator);
+            const chart2 = new RandomChart([chart2Data], randomGenerator);
             let chart1Output = chart1.get(3);
             let chart2Output = chart2.get(3);
             const chart1Results = chart1Output.results;

@@ -1,12 +1,12 @@
 const tavernMenuItemsWithPrices = require('../../data/charts/TavernMenuItemsWithPrices.json');
-import LinkedChart from '../../src/LinkedChart'
+import RandomChart from '../../src/RandomChart'
 import * as RandomChartSpec from '../RandomChartSpecHelper'
 import { expect } from 'chai'
 
 
 describe('TavernMenuItemsWithPrices', function() {
   it('should return same result', function() {
-    const chart = new LinkedChart([{name:'TavernMenuItemsWithPrices', items:tavernMenuItemsWithPrices}]);
+    const chart = new RandomChart([{name:'TavernMenuItemsWithPrices', items:tavernMenuItemsWithPrices}]);
     RandomChartSpec.verifyGet(chart);
     RandomChartSpec.verifyMultipleGet(chart, 3);
     expect(chart.items.length).to.eql(6);
