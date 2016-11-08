@@ -13,7 +13,6 @@ describe('TreasureTypeB', function() {
 
         const chart = new RandomChart(tables, randomGenerator);
         const item = RandomChartSpec.verifyGet(chart);
-        console.log(item);
 
         expect(item.results.length).to.be.eql(4);
         expect(item.results[0].index).to.be.eql(1);

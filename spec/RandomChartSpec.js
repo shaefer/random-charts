@@ -1,6 +1,7 @@
 import RandomChart from '../src/RandomChart';
 import * as RandomChartSpec from './RandomChartSpecHelper';
 import getRandomGenerator from '../src/models/GetRandomGenerator';
+import ChartData from '../src/models/ChartData';
 import { expect } from 'chai';
 
 describe('LinkedChart', function() {
@@ -78,8 +79,8 @@ describe('LinkedChart', function() {
 describe('RandomChart', function() {
     describe('create', function () {
         it('should create a new class that can be instantiated and results returned', function() {
-            const table = {name:"myChart", items:["One1", "Two2", "Three3"]};
-            const chart = new RandomChart([table]);
+            const table = new ChartData("myChart", ["One1", "Two2", "Three3"]);
+            const chart = new RandomChart(table);
             RandomChartSpec.verifyGet(chart);
             RandomChartSpec.verifyMultipleGet(chart, 3);
         });
