@@ -46,4 +46,4 @@ const items = [
 
 ];
 
-export default {name:"Type B Treasure, Coins and Gems", items:items, subTables:[GemstoneGrade1, GemstoneGrade2]}
+export default {name:"Type B Treasure, Coins and Gems", items:items, tables:[GemstoneGrade1, GemstoneGrade2]}

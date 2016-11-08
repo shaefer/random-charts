@@ -8,7 +8,10 @@ describe('TreasureTypeB', function() {
     it('should return multiple items with deeply rolled values', function() {
         const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 2;
         const randomGenerator = getRandomGenerator(randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
-        const chart = new LinkedChart(TreasureTypeB.name, TreasureTypeB.items, TreasureTypeB.subTables, randomGenerator);
+
+        const tables = [TreasureTypeB].concat(TreasureTypeB.tables);
+
+        const chart = new LinkedChart(tables, randomGenerator);
         const item = RandomChartSpec.verifyGet(chart);
         console.log(item);
 
