@@ -86,12 +86,20 @@ describe('RandomChart', function() {
         });
     });
     describe('createWithBadData', function () {
-        it('should throw exception when trying to make data into ChartData', function() {
+        it('should throw exception when trying to make data without name and items into ChartData', function() {
             const table = {items:["1", "2", "3", "4"]};
             const createRandomChartFn = () => {
                 new RandomChart(table)
             };
             expect(createRandomChartFn).to.throw(Error);
+        });
+
+        it('should not throw exception when data has name and items', function() {
+            const table = {name:"someTable", items:["1", "2", "3", "4"]};
+            const createRandomChartFn = () => {
+                new RandomChart(table)
+            };
+            expect(createRandomChartFn).to.not.throw(Error);
         });
     });
 });
