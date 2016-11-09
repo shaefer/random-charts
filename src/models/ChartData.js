@@ -18,6 +18,6 @@ export default class ChartData {
         if (obj.name && obj.items) {
             return new ChartData(obj.name, obj.items, obj.subtables).withDescription(obj.description);
         }
-        throw "Cannot convert to chart data without the 'name' and 'items' properties";
+        throw new Error("Cannot convert to chart data without the 'name' and 'items' properties");
     }
 }

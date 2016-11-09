@@ -85,7 +85,17 @@ describe('RandomChart', function() {
             RandomChartSpec.verifyMultipleGet(chart, 3);
         });
     });
+    describe('createWithBadData', function () {
+        it('should throw exception when trying to make data into ChartData', function() {
+            const table = {items:["1", "2", "3", "4"]};
+            const createRandomChartFn = () => {
+                new RandomChart(table)
+            };
+            expect(createRandomChartFn).to.throw(Error);
+        });
+    });
 });
+
 
 describe('ChartsWithRandomSeed', function() {
     describe('get()', function() {
@@ -116,18 +126,12 @@ describe('ChartsWithRandomSeed', function() {
             const items = ["One1", "Two2", "Three3"];
 
             let chart1Name = "chart1";
-            let chart2Name = "chart2";
             const chart1Data = {name:chart1Name, items: items};
-            const chart2Data = {name:chart2Name, items: items};
             const chart1 = new RandomChart([chart1Data], randomGenerator);
-            const chart2 = new RandomChart([chart2Data], randomGenerator);
             let chart1Output = chart1.get(3);
-            let chart2Output = chart2.get(3);
             const chart1Results = chart1Output.results;
-            const chart2Results = chart2Output.results;
 
             expect(chart1Results.length).to.eql(3);
-            expect(chart2Results.length).to.eql(3);
         });
     });
 });
