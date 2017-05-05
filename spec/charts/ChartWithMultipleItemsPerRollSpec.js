@@ -1,8 +1,8 @@
-import ChartData from '../../data/charts/ChartWithMultipleItemsPerRoll';
-import RandomChart from '../../src/RandomChart';
+import ChartData from '../../dist/data/charts/ChartWithMultipleItemsPerRoll';
+import RandomChart from '../../dist/RandomChart';
 import * as RandomChartSpec from '../RandomChartSpecHelper';
-import getRandomGenerator from '../../src/models/GetRandomGenerator';
-import DiceNotationValueChartData from '../../src/models/DiceNotationValueChartData';
+import getRandomGenerator from '../../dist/models/GetRandomGenerator';
+import DiceNotationValueChartData from '../../dist/models/DiceNotationValueChartData';
 import { expect } from 'chai';
 
 describe('ChartWithMultipleItemsPerRoll', function() {

@@ -1,7 +1,7 @@
-import TreasureTypeB from '../../../data/charts/treasureByType/TreasureTypeB';
-import RandomChart from '../../../src/RandomChart';
+import TreasureTypeB from '../../../dist/data/charts/treasureByType/TreasureTypeB';
+import RandomChart from '../../../dist/RandomChart';
 import * as RandomChartSpec from '../../RandomChartSpecHelper';
-import getRandomGenerator from '../../../src/models/GetRandomGenerator';
+import getRandomGenerator from '../../../dist/models/GetRandomGenerator';
 import { expect } from 'chai';
 
 describe('TreasureTypeB', function() {

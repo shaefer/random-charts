@@ -1,4 +1,4 @@
-import ChartData from '../../../src/models/DiceNotationValueChartData';
+import ChartData from '../../../models/DiceNotationValueChartData';
 import GemstoneGrade1 from '../gemstones/GemstoneGrade1';
 import GemstoneGrade2 from '../gemstones/GemstoneGrade2';
 //http://paizo.com/pathfinderRPG/prd/ultimateEquipment/appendix.html#type-b-treasure-coins-and-gems-table

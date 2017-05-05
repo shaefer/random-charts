@@ -1,7 +1,7 @@
-import GemstonesGrade6 from '../../../data/charts/gemstones/GemstoneGrade6';
-import RandomChart from '../../../src/RandomChart'
+import GemstonesGrade6 from '../../../dist/data/charts/gemstones/GemstoneGrade6';
+import RandomChart from '../../../dist/RandomChart'
 import * as RandomChartSpec from '../../RandomChartSpecHelper';
-import getRandomGenerator from '../../../src/models/GetRandomGenerator';
+import getRandomGenerator from '../../../dist/models/GetRandomGenerator';
 import { expect } from 'chai';
 
 describe('GemstonesGrade6', function() {

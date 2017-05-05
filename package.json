@@ -1,8 +1,9 @@
 {
   "name": "random-charts",
-  "version": "0.0.9",
+  "version": "0.0.14",
   "description": "Library for creating random tables and random charts for role playing games (rpgs).",
   "main": "index.js",
+  "files": ["dist"],
   "keywords": [
     "random",
     "encounter tables",
@@ -32,7 +33,7 @@
     "lint": "jshint src || true",
     "babel": "babel src -d dist && babel data -d dist/data",
     "test-only": "mocha ./spec --compilers js:babel-register --recursive",
-    "test": "npm run clean && npm run babel && npm run lint & npm run test-only",
+    "test": "npm run clean && npm run babel && npm run lint && npm run test-only",
     "build": "npm test",
     "prepublish": "npm run build"
   }
