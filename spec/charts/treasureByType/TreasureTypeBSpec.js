@@ -9,9 +9,7 @@ describe('TreasureTypeB', function() {
         const randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem = 2;
         const randomGenerator = getRandomGenerator(randomSeedThatReturnsIndexOf3ToForceTestOfLinkedItem);
 
-        const tables = [TreasureTypeB].concat(TreasureTypeB.tables);
-
-        const chart = new RandomChart(tables, randomGenerator);
+        const chart = new RandomChart(TreasureTypeB.tables, randomGenerator);
         const item = RandomChartSpec.verifyGet(chart);
 
         expect(item.results.length).to.be.eql(4);

@@ -6,4 +6,12 @@ export default class ChartOutput {
     getResult(i = 0) {
         return this.results[i].result;
     }
+
+    toArray() {
+      return this.results.map((r) => r.result.toString());
+    }
+
+    toString() {
+      return this.toArray().join(", ");
+    }
 }

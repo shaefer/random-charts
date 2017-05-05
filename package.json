@@ -1,6 +1,6 @@
 {
   "name": "random-charts",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "description": "Library for creating random tables and random charts for role playing games (rpgs).",
   "main": "index.js",
   "files": ["dist"],

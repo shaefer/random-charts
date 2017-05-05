@@ -46,4 +46,8 @@ const items = [
 
 ];
 
-export default {name:"Type B Treasure, Coins and Gems", items:items, tables:[GemstoneGrade1, GemstoneGrade2]}
+const parentTable = {name:"Type B Treasure, Coins and Gems", items:items, tables:[GemstoneGrade1, GemstoneGrade2]};
+const mergedTables = [parentTable].concat(parentTable.tables);
+parentTable.tables = mergedTables;
+
+export default parentTable;
