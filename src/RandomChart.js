@@ -37,6 +37,7 @@ export default class RandomChart {
         }
     }
 
+
     get(times = 1) {
         const items = this.items;
         let selectedItems = [];
@@ -48,6 +49,7 @@ export default class RandomChart {
              */
             if (isArray(item.result)) {
                 const multiItemResults = item.result.map(convertToResult.bind(null, item.index));
+                /* jshint loopfunc: true */
                 multiItemResults.forEach((mir) => {
                     this.addLinkedChartResultsToSelectedItems(mir, selectedItems);
                 });
