@@ -26,6 +26,8 @@ describe('LinkedChart', function() {
       const item = RandomChartSpec.verifyGet(chart);
       const result = item.results[0];
       expect(result.index).to.be.eql(1);
+      expect(result.chartName).to.be.eql(subTable.name);
+      expect(result.result).to.be.eql("Chart2-B");
     });
   });
 

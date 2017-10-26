@@ -15,8 +15,10 @@ Note: Items in a chart can be just Strings or a deep object. (See tests in the c
 
 ```javascript
 //Basic Chart (basic items selection = equal chance of all items)
+import {SimpleRandomChart, CreateChartForItems} from './SimpleRandomChart';
 const items = ["Item1", "Item2"];
-const chart = new RandomChart("NewChartName", items);
+const chart = SimpleRandomChart("NewChartName", items); 
+//OR const chart = CreateChartForItems(items); (creates a random chart name for you.)
 const singleItem = chart.get();
 const sixItems = chart.get(6);
 ```
@@ -25,7 +27,7 @@ Example showing item selection with dice rolling. More than 1 die rolled produce
 //Basic Chart with items selected by Rolling Dice (2d4 Bell curve)
 const diceItems = ["2", "3", "4", "5", "6", "7", "8"];
 const selectionStrategy2d4 = new DiceRollItemSelection(2, 4);
-const diceChart = new RandomChart("DiceChart", diceItems, "randSeed", selectionStrategy2d4;
+const diceChart = SimpleRandomChart("DiceChart", diceItems, "randSeed", selectionStrategy2d4;
 const singleDiceItem = chart.get(); //rolled 2d4 to get an item from the chart.
 const sixDiceItems = chart.get(6);
 ```

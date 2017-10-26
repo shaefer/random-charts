@@ -8,7 +8,7 @@ export default class RandomChart {
         tables = isValidTableData(tables);
         if (tables instanceof ChartData) tables = [tables];
 
-        const mainTable = tables[0];
+        const mainTable = tables[0]; //assumes first table is main table to roll on. I don't like the assumption.
         this.chartName = mainTable.name;
         this.items = mainTable.items;
         this.random = randomGenerator;
